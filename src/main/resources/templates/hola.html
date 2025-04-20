@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+        <title>Detalle Usuario</title>
+    </head>
+<body>
+<div th:if="${usuarios != null}">
+    <h1>DNIs de todos los usuarios:</h1>
+    <ul>
+        <li th:each="usuario : ${usuarios}">
+            <span th:text="${usuario.dni}"></span>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
