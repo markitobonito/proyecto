@@ -1,7 +1,5 @@
 package com.example.project.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 @Getter
@@ -10,7 +8,10 @@ import lombok.Setter;
 @Table(name = "EstadoMensaje")
 public class EstadoMensaje {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idEstadoMensaje", nullable = false)
     private int idEstadoMensaje;
 
+    @Column(name="estado")
     private String estado;
 }

@@ -1,9 +1,5 @@
 package com.example.project.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,10 +10,19 @@ import lombok.Setter;
 public class Espacio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idEspacio", nullable = false)
     private int idEspacio;
-
+    @Column(name="nombre")
     private String nombre;
-    private int idLugar;
-    private int idEstadoEspacio;
+
+    @ManyToOne
+    @JoinColumn(name="idLugar")
+    private Lugar idLugar;
+
+    @ManyToOne
+    @JoinColumn(name="idEstadoEspacio")
+    private EstadoEspacio idEstadoEspacio;
+
+    @Column(name="tipo")
     private String tipo;
 }

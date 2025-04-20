@@ -1,10 +1,6 @@
 package com.example.project.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +11,9 @@ import lombok.Setter;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idRol", nullable = false)
     private int idRol;
 
+    @Column(name="rol")
     private String rol;
 }

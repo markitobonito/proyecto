@@ -1,10 +1,6 @@
 package com.example.project.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.sql.Date;
@@ -17,14 +13,33 @@ import java.sql.Time;
 public class Geolocalizacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idGeolocalizacion", nullable = false)
     private int idGeolocalizacion;
 
+    @Column(name="fecha")
     private Date fecha;
+
+    @Column(name="horaInicio")
     private Time horaInicio;
+
+    @Column(name="horaFin")
     private Time horaFin;
-    private int coordinador;
-    private int espacio;
+
+    @JoinColumn(name="coordinador")
+    @OneToOne
+    private Usuarios coordinador;
+
+    @JoinColumn(name="espacio")
+    @OneToOne
+    private Espacio espacio;
+
+    @Column(name="lugarExacto")
     private String lugarExacto;
+
+    @Column(name="observacion")
     private String observacion;
-    private int estado;
+
+    @ManyToOne
+    @JoinColumn(name="estado")
+    private EstadoGeo estado;
 }

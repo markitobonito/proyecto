@@ -1,11 +1,6 @@
 package com.example.project.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.sql.Time;
@@ -19,19 +14,41 @@ import java.sql.Timestamp;
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idReserva", nullable = false)
     private int idReserva;
 
+    @Column(name="horaInicio")
     private Time horaInicio;
+
+    @Column(name="horaFin")
     private Time horaFin;
+
+    @Column(name="fecha")
     private Date fecha;
-    private int coordinador;
+
+    @JoinColumn(name="coordinador")
+    @ManyToOne
+    private Usuarios coordinador;
+
+    @Column(name="costo")
     private Double costo;
-    private int vecino;
-    private int estado;
-    private int espacio;
+
+    @JoinColumn(name="vecino")
+    @ManyToOne
+    private Usuarios vecino;
+
+    @JoinColumn(name="estado")
+    @ManyToOne
+    private EstadoReserva estado;
+
+    @JoinColumn(name="espacio")
+    @OneToOne
+    private Espacio espacio;
 
     @Lob
+    @Column(name="captura")
     private byte[] captura;
 
+    @Column(name="momentoReserva")
     private Timestamp momentoReserva;
 }

@@ -1,13 +1,7 @@
 package com.example.project.entity;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 @Getter
 @Setter
 @Entity
@@ -15,7 +9,9 @@ import lombok.Setter;
 public class Lugar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idLugar", nullable = false)
     private int idLugar;
 
+    @Column(name="lugar", nullable = false)
     private String lugar;
 }

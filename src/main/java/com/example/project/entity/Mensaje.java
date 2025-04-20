@@ -1,7 +1,5 @@
 package com.example.project.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.sql.Timestamp;
@@ -11,10 +9,25 @@ import java.sql.Timestamp;
 @Table(name = "Mensaje")
 public class Mensaje {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idMensaje", nullable = false)
     private int idMensaje;
+
+    @Column(name="horaEnvio")
     private Timestamp horaEnvio;
-    private int transmisor;
-    private int receptor;
+
+    @OneToOne
+    @JoinColumn(name="transmisor")
+    private Usuarios transmisor;
+
+    @OneToOne
+    @JoinColumn(name="receptor")
+    private Usuarios receptor;
+
+    @Column(name="mensaje")
     private String mensaje;
-    private int estado;
+
+    @ManyToOne
+    @JoinColumn(name="estado")
+    private EstadoMensaje estado;
 }

@@ -10,27 +10,29 @@ import lombok.Setter;
 public class Usuarios {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name="idUsuarios", nullable = false)
+    @Column(name = "idUsuarios", nullable = false)
     private int idUsuarios;
 
-    @Column(name="nombres")
+    @Column(name = "nombres")
     private String nombres;
 
-    @Column(name="apellidos")
+    @Column(name = "apellidos")
     private String apellidos;
 
-    @Column(name="dni")
+    @Column(name = "dni")
     private int dni;
 
-    @Column(name="correo")
+    @Column(name = "correo")
     private String correo;
 
-    @Column(name="contrasena")
+    @Column(name = "contrasena")
     private String contrasena;
 
-    @Column(name="rol", nullable = false)
-    private int rol;
+    @ManyToOne
+    @JoinColumn(name = "rol")
+    private Rol rol;
 
-    @Column(name="estado", nullable = false)
-    private int estado;
+    @ManyToOne
+    @JoinColumn(name="estado")
+    private EstadoUsu estado;
 }
