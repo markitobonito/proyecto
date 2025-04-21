@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!-- =========================================================
-* Municipalidad de San Miguel - Sistema de Reservas de Canchas
-============================================================== -->
-<!-- beautify ignore:start -->
 <html lang="es" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-semi-dark" data-assets-path="../../assets/" data-template="vertical-menu-template-semi-dark">
 <!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template-semi-dark/auth-login-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2024 23:15:07 GMT -->
 <head>
@@ -123,11 +119,13 @@
           <!-- /Logo -->
           <h4 class="mb-2">¡Bienvenido a Municipalidad de San Miguel!</h4>
           <p class="mb-4">Por favor, inicie sesión en su cuenta y comience a disfrutar del sistema</p>
-  
-          <form  class="mb-3" action="https://tusitiomunicipal.com/inicio" method="GET">
+          <!-- === Aquí insertamos el mensaje de error === -->
+          <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+          <!-- ========================================== -->
+          <form  class="mb-3" th:action="@{/login}" method="post">
             <div class="mb-3">
               <label for="email" class="form-label">Correo o DNI</label>
-              <input type="text" class="form-control" id="email" name="email-username" placeholder="Ingrese su correo o DNI" autofocus>
+              <input type="text" class="form-control" id="email" name="username" placeholder="Ingrese su correo o DNI" autofocus>
             </div>
             <div class="mb-3 form-password-toggle">
               <div class="d-flex justify-content-between">

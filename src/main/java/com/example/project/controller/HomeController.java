@@ -1,15 +1,15 @@
 package com.example.project.controller;
 import com.example.project.entity.Usuarios;
 import com.example.project.repository.UsuariosRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 @Controller
-@RequestMapping("/")
+@RequestMapping("/Usuarios")
 public class HomeController {
     final UsuariosRepository usuariosRepository;  // Declaración correcta
     // Constructor con inyección de dependencia
@@ -21,5 +21,42 @@ public class HomeController {
         List<Usuarios> usuarios = usuariosRepository.findAll(); // Obtiene todos los usuarios
         model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista
         return "hola"; // Usa la misma vista para mostrar todos los DNIs
+    }
+    @PostMapping("/")
+    public String logueo(@RequestParam String username,
+                         @RequestParam String password,
+                         Model model,
+                         HttpSession session
+    ) {
+        // Intentar por correo
+        Optional<Usuarios> opt = usuariosRepository.findByCorreoAndContrasena(username, password);
+        // Si no, intentar por DNI (si es numérico)
+        if (opt.isEmpty()) {
+            try {
+                int dni = Integer.parseInt(username);
+                opt = usuariosRepository.findByDniAndContrasena(dni, password);
+            } catch (NumberFormatException e) { }
+        }
+
+        if (opt.isPresent()) {
+            Usuarios user = opt.get();
+            session.setAttribute("loggedUser", user);
+
+            // Redirigir según el rol
+            String rolName = user.getRol().getRol();
+            switch (rolName) {
+                case "admininstrador":   return "redirect:/administrador/dashboard";
+                case "vecino": return "redirect:/vecino/home";
+                case "superadmin": return "redirect:/superadmin/home";
+                case "coordinador":return "redirect:/superadmin/coordinador";
+                default:
+                    return "redirect:/";
+            }
+        }
+
+        // Falló autenticación
+        model.addAttribute("error", "Credenciales inválidas");
+        return "login";
+
     }
 }
