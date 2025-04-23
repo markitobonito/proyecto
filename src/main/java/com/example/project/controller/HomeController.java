@@ -74,12 +74,30 @@ public class HomeController {
         return "registro";        // tu registro.html
     }
     @PostMapping("/registro")
-    public String procesarRegistro(@ModelAttribute Usuarios usuario) {
-        // fijamos rol y estado por defecto:
-        usuario.setRol( rolRepository.findByRol("vecino") );
-        usuario.setEstado( estadoRepository.findByNombre("activo") );
-        usuariosRepository.save(usuario);
-        return "redirect:/login";  // lo lleva a tu login.html
+    public String procesarRegistro(
+            @RequestParam int dni,
+            @RequestParam(required = false) String correo,
+            @RequestParam String contrasena,
+            @RequestParam String confirmContrasena) {
+
+        if (!contrasena.equals(confirmContrasena)) {
+            // aquí podrías reenviar un error al modelo; para simplificar:
+            return "redirect:/registro?error=diff";
+        }
+
+        Usuarios u = new Usuarios();
+        u.setDni(dni);
+        u.setCorreo(correo);
+        u.setContrasena(contrasena);
+
+        // Asignar rol “vecino” y estado “activo”
+        u.setRol( rolRepository.findByRol("vecino") );
+        u.setEstado( estadoRepository.findByNombre("activo") );
+
+        usuariosRepository.save(u);
+
+        // redirige a tu login.html
+        return "redirect:/login";
     }
 
 }
