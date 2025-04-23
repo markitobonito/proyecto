@@ -1,5 +1,7 @@
 package com.example.project.controller;
 import com.example.project.entity.Usuarios;
+import com.example.project.repository.EstadoUsuRepository;
+import com.example.project.repository.RolRepository;
 import com.example.project.repository.UsuariosRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -11,10 +13,16 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/Usuarios")
 public class HomeController {
-    final UsuariosRepository usuariosRepository;  // Declaración correcta
+    final UsuariosRepository usuariosRepository;
+    final RolRepository rolRepository;
+    final EstadoUsuRepository estadoRepository;// Declaración correcta
     // Constructor con inyección de dependencia
-    public HomeController(UsuariosRepository usuariosRepository) {
+    public HomeController(UsuariosRepository usuariosRepository,
+     RolRepository rolRepository,
+                          EstadoUsuRepository estadoRepository) {
         this.usuariosRepository = usuariosRepository;
+        this.rolRepository      = rolRepository;
+        this.estadoRepository   = estadoRepository;
     }
     @GetMapping("/")
     public String mostrarTodosUsuarios(Model model) {
@@ -58,6 +66,20 @@ public class HomeController {
         model.addAttribute("error", "Credenciales inválidas");
         return "login";
 
+    }
+
+    @GetMapping("/registro")
+    public String mostrarFormRegistro(Model model) {
+        model.addAttribute("usuario", new Usuarios());
+        return "registro";        // tu registro.html
+    }
+    @PostMapping("/registro")
+    public String procesarRegistro(@ModelAttribute Usuarios usuario) {
+        // fijamos rol y estado por defecto:
+        usuario.setRol( rolRepository.findByRol("vecino") );
+        usuario.setEstado( estadoRepository.findByNombre("activo") );
+        usuariosRepository.save(usuario);
+        return "redirect:/login";  // lo lleva a tu login.html
     }
 
 }
