@@ -200,23 +200,24 @@
       </ul>
     </li>
 
-    <!-- Reporte -->
+    <!-- Creacion coordinadores -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class='menu-icon tf-icons bx bx-store'></i>
-        <div class="text-truncate" data-i18n="Reportes">Reportes</div>
+        <div class="text-truncate" data-i18n="Coordinadores">Coordinadores</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
           <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/landing-page.html" class="menu-link" target="_blank">
-            <div class="text-truncate" data-i18n="Canchas y servicios">canchas y servicios
-            deportivos</div>
+            <div class="text-truncate" data-i18n="Añadir Coordinadores">Añadir Coordinadores</div>
           </a>
         </li>
-        
+
       </ul>
     </li>
 
+
+  </ul>
 
 </aside>
 <!-- / Menu -->
@@ -344,24 +345,19 @@
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="pages-profile-user.html">
+                <a class="dropdown-item" href="mi_cuenta.html">
                   <i class="bx bx-user me-2"></i>
                   <span class="align-middle">Mi perfil</span>
                 </a>
               </li>
-              <li>
-                <a class="dropdown-item" href="pages-account-settings-account.html">
-                  <i class="bx bx-cog me-2"></i>
-                  <span class="align-middle">Configuraciones</span>
-                </a>
-              </li>
+
               
               
               <li>
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                <a class="dropdown-item" href="/proyecto/project/templates/registro/registro.html" target="_blank">
                   <i class="bx bx-power-off me-2"></i>
                   <span class="align-middle">Cerrar Sesion</span>
                 </a>
@@ -496,7 +492,7 @@
       btn.addEventListener('click', function() {
         const servicioId = this.getAttribute('data-id');
         // Aquí tu lógica para mostrar detalles
-        console.log(`Mostrar detalles del servicio ${servicioId}`);
+        window.location.href = `detalles.html?id=${servicioId}`;
       });
     });
   </script>
@@ -597,11 +593,7 @@
   </div>
   <!-- / Layout wrapper -->
 
-  
-  <div class="buy-now">
-    <a href="https://themeselection.com/item/sneat-dashboard-pro-bootstrap/" target="_blank" class="btn btn-danger btn-buy-now">Buy Now</a>
-  </div>
-  
+
 
   
 
@@ -635,7 +627,8 @@
 
   <!-- Page JS -->
   <script src="../../assets/js/tables-datatables-basic.js"></script>
-  
+</div>
+
 </body>
 
 
