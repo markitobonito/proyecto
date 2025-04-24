@@ -1,72 +1,52 @@
 <!DOCTYPE html>
-<html lang="es" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-semi-dark" data-assets-path="../../assets/" data-template="vertical-menu-template-semi-dark">
-<!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template-semi-dark/auth-login-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2024 23:15:07 GMT -->
-<head>
+<html lang="es"
+      class="light-style layout-wide customizer-hide"
+      dir="ltr"
+      data-theme="theme-semi-dark"
+      data-assets-path="/"  data-template="vertical-menu-template-semi-dark"
+      xmlns:th="http://www.thymeleaf.org"> <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
   <title>Municipalidad de San Miguel - Sistema de Reservas de Canchas</title>
   <meta name="description" content="El dashboard más poderoso y completo construido en Bootstrap 5 para desarrolladores." />
-  <meta name="keywords" content="dashboard, portada Bootstrap 5, diseño Bootstrap 5, administración Bootstrap 5">  
-  <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+  <meta name="keywords" content="dashboard, portada Bootstrap 5, diseño Bootstrap 5, administración Bootstrap 5">
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
-  <!-- End Google Tag Manager -->
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
-  <!-- Icons -->
-  <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css" />
-  <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
-  <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
-  <!-- Core CSS -->
-  <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
-  <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-semi-dark.css" class="template-customizer-theme-css" />
-  <link rel="stylesheet" href="../../assets/css/demo.css" />
-  <!-- Vendors CSS -->
-  <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-  <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
-  <!-- Vendor -->
-  <link rel="stylesheet" href="../../assets/vendor/libs/%40form-validation/form-validation.css" />
-  <!-- Page CSS -->
-  <link rel="stylesheet" href="../../assets/vendor/css/pages/page-auth.css">
-  <!-- Helpers -->
-  <script src="../../assets/vendor/js/helpers.js"></script>
-  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-  <!--? Template customizer: Para ocultar el personalizador, establezca displayCustomizer en false en config.js.  -->
-  <script src="../../assets/vendor/js/template-customizer.js"></script>
-  <!--? Config: Archivo de configuración obligatorio con variables globales y opciones de tema predeterminadas. Establezca su opción de tema preferida en este archivo.  -->
-  <script src="../../assets/js/config.js"></script>
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
+  <link rel="icon" type="image/x-icon" th:href="@{https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico}" /> <link rel="preconnect" th:href="@{https://fonts.googleapis.com/}">
+  <link rel="preconnect" th:href="@{https://fonts.gstatic.com/}" crossorigin>
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap}" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/vendor/fonts/boxicons.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/fonts/fontawesome.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/fonts/flag-icons.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/css/rtl/core.css}" class="template-customizer-core-css" />
+  <link rel="stylesheet" th:href="@{/vendor/css/rtl/theme-semi-dark.css}" class="template-customizer-theme-css" />
+  <link rel="stylesheet" th:href="@{/css/demo.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/libs/typeahead-js/typeahead.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/libs/@form-validation/form-validation.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/css/pages/page-auth.css}">
+  <script th:src="@{/vendor/js/helpers.js}"></script>
+  <script th:src="@{/vendor/js/template-customizer.js}"></script>
+  <script th:src="@{/js/config.js}"></script>
 </head>
 <body>
-   <!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  
-  <!-- Content -->
-  <div class="authentication-wrapper authentication-cover">
-    <div class="authentication-inner row m-0">
-      <!-- /Left Text -->
-      <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
-        <div class="w-100 d-flex justify-content-center">
-          <img src="../../assets/img/illustrations/boy-with-rocket-light.png" class="img-fluid" alt="Imagen de inicio de sesión" width="700" data-app-dark-img="illustrations/boy-with-rocket-dark.png" data-app-light-img="illustrations/boy-with-rocket-light.html">
-        </div>
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe>
+</noscript>
+<div class="authentication-wrapper authentication-cover">
+  <div class="authentication-inner row m-0">
+    <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
+      <div class="w-100 d-flex justify-content-center">
+        <img th:src="@{/img/illustrations/boy-with-rocket-light.png}" class="img-fluid" alt="Imagen de inicio de sesión" width="700" data-app-dark-img="illustrations/boy-with-rocket-dark.png" data-app-light-img="illustrations/boy-with-rocket-light.html">
       </div>
-      <!-- /Left Text -->
-  
-      <!-- Inicio de Sesión -->
-      <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
-        <div class="w-px-400 mx-auto">
-          <!-- Logo -->
-          <div class="app-brand mb-5">
-            <a href="index.html" class="app-brand-link gap-2">
+    </div>
+    <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
+      <div class="w-px-400 mx-auto">
+        <div class="app-brand mb-5">
+          <a href="index.html" class="app-brand-link gap-2">
               <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <defs>
@@ -101,103 +81,85 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo text-body fw-bold">Reserva de espacios</span>
-            </a>
-          </div>
-          <!-- /Logo -->
-          <h4 class="mb-2">¡Bienvenido a Municipalidad de San Miguel!</h4>
-          <p class="mb-4">Por favor, inicie sesión en su cuenta y comience a disfrutar del sistema</p>
-          <!-- === Aquí insertamos el mensaje de error === -->
-          <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
-          <!-- ========================================== -->
-          <form  class="mb-3" th:action="@{/login}" method="post">
-            <div class="mb-3">
-              <label for="email" class="form-label">Correo o DNI</label>
-              <input type="text" class="form-control" id="email" name="username" placeholder="Ingrese su correo o DNI" autofocus>
+            <span class="app-brand-text demo text-body fw-bold">Reserva de espacios</span>
+          </a>
+        </div>
+        <h4 class="mb-2">¡Bienvenido a Municipalidad de San Miguel!</h4>
+        <p class="mb-4">Por favor, inicie sesión en su cuenta y comience a disfrutar del sistema</p>
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+        <form  class="mb-3" th:action="@{/}" method="post"> <div class="mb-3">
+          <label for="email" class="form-label">Correo o DNI</label>
+          <input type="text" class="form-control" id="email" name="username" placeholder="Ingrese su correo o DNI" autofocus>
+        </div>
+          <div class="mb-3 form-password-toggle">
+            <div class="d-flex justify-content-between">
+              <label class="form-label" for="password">Contraseña</label>
+              <a href="olvidoContrasena.html">
+                <small>¿Olvidó su contraseña?</small>
+              </a>
             </div>
-            <div class="mb-3 form-password-toggle">
-              <div class="d-flex justify-content-between">
-                <label class="form-label" for="password">Contraseña</label>
-                <a href="olvidoContrasena.html">
-                  <small>¿Olvidó su contraseña?</small>
-                </a>
-              </div>
-              <div class="input-group input-group-merge">
-                <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
-                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-              </div>
+            <div class="input-group input-group-merge">
+              <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
             </div>
-            <div class="mb-3">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="remember-me">
-                <label class="form-check-label" for="remember-me">
-                  Recuérdame
-                </label>
-              </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="remember-me">
+              <label class="form-check-label" for="remember-me">
+                Recuérdame
+              </label>
             </div>
-            <button class="btn btn-primary d-grid w-100">
-              Iniciar sesión
-            </button>
-          </form>
-  
-          <p class="text-center">
-            <span>¿Nuevo en nuestra plataforma?</span>
-            <a href="registro.html">
-              <span>Crear una cuenta</span>
-            </a>
-          </p>
-  
-          <div class="divider my-4">
-            <div class="divider-text">o</div>
           </div>
-  
-          <div class="d-flex justify-content-center">
-            <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
-              <i class="tf-icons bx bxl-facebook"></i>
-            </a>
-  
-            <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
-              <i class="tf-icons bx bxl-google-plus"></i>
-            </a>
-  
-            <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-              <i class="tf-icons bx bxl-twitter"></i>
-            </a>
-          </div>
+          <button class="btn btn-primary d-grid w-100">
+            Iniciar sesión
+          </button>
+        </form>
+
+        <p class="text-center">
+          <span>¿Nuevo en nuestra plataforma?</span>
+          <a th:href="@{/registro}"> <span>Crear una cuenta</span>
+          </a>
+        </p>
+
+        <div class="divider my-4">
+          <div class="divider-text">o</div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
+            <i class="tf-icons bx bxl-facebook"></i>
+          </a>
+
+          <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
+            <i class="tf-icons bx bxl-google-plus"></i>
+          </a>
+
+          <a href="javascript:;" class="btn btn-icon btn-label-twitter">
+            <i class="tf-icons bx bxl-twitter"></i>
+          </a>
         </div>
       </div>
-      <!-- /Inicio de Sesión -->
     </div>
   </div>
-  <!-- / Content -->
-  
-  
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
-  <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="../../assets/vendor/libs/popper/popper.js"></script>
-  <script src="../../assets/vendor/js/bootstrap.js"></script>
-  <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-  <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
-  <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
-  <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
-  <script src="../../assets/vendor/js/menu.js"></script>
-  <!-- endbuild -->
-  
-  <!-- Vendors JS -->
-  <script src="../../assets/vendor/libs/%40form-validation/popular.js"></script>
-  <script src="../../assets/vendor/libs/%40form-validation/bootstrap5.js"></script>
-  <script src="../../assets/vendor/libs/%40form-validation/auto-focus.js"></script>
-  
-  <!-- Main JS -->
-  <script src="../../assets/js/main.js"></script>
-  
-  <!-- Page JS -->
-  <script src="../../assets/js/pages-auth.js"></script>
-  
+</div>
+<script th:src="@{/vendor/libs/jquery/jquery.js}"></script>
+<script th:src="@{/vendor/libs/popper/popper.js}"></script>
+<script th:src="@{/vendor/js/bootstrap.js}"></script>
+<script th:src="@{/vendor/libs/perfect-scrollbar/perfect-scrollbar.js}"></script>
+<script th:src="@{/vendor/libs/hammer/hammer.js}"></script>
+<script th:src="@{/vendor/libs/i18n/i18n.js}"></script>
+<script th:src="@{/vendor/libs/typeahead-js/typeahead.js}"></script>
+<script th:src="@{/vendor/js/menu.js}"></script>
+<script th:src="@{/vendor/libs/@form-validation/popular.js}"></script>
+<script th:src="@{/vendor/libs/@form-validation/bootstrap5.js}"></script>
+<script th:src="@{/vendor/libs/@form-validation/auto-focus.js}"></script>
+
+<script th:src="@{/js/main.js}"></script>
+
+<script th:src="@{/js/pages-auth.js}"></script>
+
 </body>
-  
-  
-<!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template-semi-dark/auth-login-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2024 23:15:07 GMT -->
+
+
 </html>
-<!-- beautify ignore:end -->
