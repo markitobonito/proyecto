@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="es" class="light-style layout-compact " dir="ltr" data-theme="theme-semi-dark" data-assets-path="../../assets/" data-template="vertical-menu-template-semi-dark">
+
+
+<!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template-semi-dark/tables-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2024 23:16:06 GMT -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="robots" content="noindex">
+
+  <title>Espacios Deportivos</title>
+
+
+  <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 Admin Dashboard built for developers!" />
+  <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+  <!-- Canonical SEO -->
+  <link rel="canonical" href="https://themeselection.com/item/sneat-dashboard-pro-bootstrap/">
+
+
+  <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="icono.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css" />
+  <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+  <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-semi-dark.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="../../assets/css/demo.css" />
+
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/quill/typography.css">
+  <link rel="stylesheet" href="../../assets/vendor/libs/quill/katex.css">
+  <link rel="stylesheet" href="../../assets/vendor/libs/quill/editor.css">
+  <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css">
+  <link rel="stylesheet" href="../../assets/vendor/libs/dropzone/dropzone.css">
+  <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
+  <link rel="stylesheet" href="../../assets/vendor/libs/tagify/tagify.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/animate-css/animate.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
+
+  <!-- Page CSS -->
+
+  <link rel="stylesheet" href="../../assets/vendor/css/pages/page-faq.css" />
+
+  <!-- Helpers -->
+  <script src="../../assets/vendor/js/helpers.js"></script>
+  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+  <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+  <script src="../../assets/js/config.js"></script>
+
+<link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
+</head>
+
+<body style="background-color:rgb(216, 248, 255);">
+
+
+<!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar" >
+  <div class="layout-container">
+
+
+    <div class="layout-page">
+      <nav class="mt-4 layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+
+
+        <div class="layout-menu-toggle navbar-nav align-items-xl-center me-1 me-xl-0   d-xl-none ">
+          <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <i class="bx bx-menu bx-sm"></i>
+          </a>
+        </div>
+
+
+        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+
+          <div class="w-75 align-items-center me-auto">
+            <div class="nav-item navbar-search-wrapper mb-0">
+              <span class="d-inline-block justify-content-center">
+                <p class="mb-0 fst-normal fw-bold ff-">Espacios Deportivos</p>
+            </span>
+            </div>
+          </div>
+
+          <ul class="navbar-nav flex-row align-items-center ms-0">
+
+            <!-- Notification -->
+            <span class="text-uppercase text-heading" style="margin-left: 10px; margin-right: 2px; font-weight: bold;">Vecino</span>
+            <!--/ Notification -->
+
+            <!-- User -->
+            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+              <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                <div class="avatar">
+                  <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
+                </div>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0 me-3">
+                        <div class="avatar">
+                          <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
+                        </div>
+                      </div>
+                      <div class="flex-grow-1">
+                        <span class="fw-medium d-block" style="color: black;">Vecino</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="bx bx-lock me-2" style="color: black;"></i>
+                    <span class="align-middle" style="color: black;">Seguridad</span>
+                  </a>
+                </li>
+
+
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item" href="principal.html" >
+                    <i class="bx bx-power-off me-2" style="color: rgb(231, 0, 0);"></i>
+                    <span class="align-middle" style="color: rgb(231, 0, 0);">Cerrar Sesión</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!--/ User -->
+
+
+          </ul>
+        </div>
+
+
+        <!-- Search Small Screens -->
+        <div class="navbar-search-wrapper search-input-wrapper  d-none">
+          <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search...">
+          <i class="bx bx-x bx-sm search-toggler cursor-pointer"></i>
+        </div>
+
+
+      </nav>
+
+
+
+      <!-- Content wrapper -->
+<div class="content-wrapper">
+
+  <!-- Content -->
+
+  <div class="container-xxl container-p-y">
+
+    <div class="card-header d-flex flex-wrap justify-content-between gap-3">
+      <!-- Filtros -->
+      <div class="col-12 d-flex card">
+        <div class="card-body p-2">
+          <div class="row align-items-center justify-content-center">
+            <!-- Tipo de Publicación -->
+            <div class="col-lg-2 col-md-6 col-sm-12 mb-1">
+              <label for="select2Basic" class="form-label mb-1" style="font-size: 0.75rem;">Tipo de Espacio</label>
+              <select id="select2Basic" class="select2 form-select form-select-sm" data-allow-clear="true" style="font-size: 0.75rem;">
+                <option value="All">Todas</option>
+                <option value="piscinas">Piscinas</option>
+                <option value="grassSintetico">Grass Sintético</option>
+                <option value="losaDeportiva">Losas Deportivas</option>
+              </select>
+            </div>
+
+            <!-- Capacidad -->
+            <div class="col-lg-2 col-md-6 col-sm-12 mb-1">
+
+              <label for="select2Basic2" class="form-label mb-1" style="font-size: 0.75rem;">Capacidad</label>
+              <select id="select2Basic2" class="select2 form-select form-select-sm" data-allow-clear="true" style="font-size: 0.75rem;">
+                <option value="capacidad1">0-10 personas</option>
+                <option value="capacidad2">10-50 personas</option>
+                <option value="capacidad3">50+ personas</option>
+              </select>
+              
+            </div>
+
+            <!-- Deporte -->
+            <div class="col-lg-2 col-md-6 col-sm-12 mb-1">
+
+              <label for="select2Basic2" class="form-label mb-1" style="font-size: 0.75rem;">Deporte</label>
+              <select id="select2Basic2" class="select2 form-select form-select-sm" data-allow-clear="true" style="font-size: 0.75rem;">
+                <option value="futbol">Fútbol</option>
+                <option value="voley">Voley</option>
+                <option value="natacion">Natacion</option>
+                <option value="basquet">Básquet</option>
+
+              </select>
+              
+            </div>
+
+            <!-- Rango de Fechas -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-1">
+              <label for="dateRange" class="form-label mb-1" style="font-size: 0.75rem;">Disponibilidad</label>
+              <input type="text" id="dateRange" class="form-control form-control-sm" placeholder="Seleccionar rango de fechas" style="font-size: 0.75rem;">
+            </div>
+
+            <!-- Aplicar Filtro -->
+            <div class="col-lg-2 d-flex justify-content-center">
+              <!-- Botón Aplicar Filtro -->
+              <button class="btn btn-facebook btn-sm" style="width: 50%;">Aplicar filtro</button>
+
+              <!-- Botón Nueva Publicación -->
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!-- Card Container -->
+      <div class="card col-12">
+        
+        <div class="card-body">
+          <div class="container-fluid">
+            <div class="row gx-1 gy-4 justify-content-between">
+
+              <!-- Card 1 -->
+              <div class="col-lg-4 d-flex justify-content-center">
+                <div class="card d-flex flex-column"  style="border: 1px solid #ddd; box-shadow: none; width: 100%;">
+                  
+                  <div class="card-body p-2 d-flex flex-column">
+                    
+                    <a class="h4" style="color: black;" data-bs-toggle="modal" href="#">Espacio Deportivo 1</a>
+                    
+                    <!-- Etiqueta -->
+                    <div class="d-flex justify-content-between align-items-center m-0">
+                      <span class="badge bg-body" style="color: gray;">Grass sintético</span>
+                    </div>
+                    <!-- /Etiqueta-->
+
+                    <!-- Foto -->
+                    <div class="rounded-1 text-center flex-grow-2 mb-3 mt-3">
+                      <a data-bs-toggle="modal" href="#evento1">
+                        <img class="img-fluid" src="https://i.ibb.co/pjDVdsd7/vintage-landscapes-with-buildings.jpg" alt="Imagen de espacio 1" style="height: 200px; object-fit: cover; border-radius: 5px;"/>
+                      </a>
+                    </div>
+                    <!-- /Foto -->
+
+                    <!-- Descripción-->
+                    <p class="text-body">Cancha de grass sintético para fútbol.</p>
+                    <!-- /Descripción -->
+                    
+                    <!-- Botones -->
+                    <div class="d-flex gap-3 text-center mt-auto mb-3 justify-content-center">
+                      <a class="col-4 btn btn-facebook d-flex" style="border-radius: 15px;" href="vecino-ver-detalles-espacio.html"> 
+                        <span>Detalles</span>
+                      </a>  
+                      <a href="vecino-disponibilidad-espacio.html" style="border-radius: 15px;" class="col-4 btn btn-primary d-flex btn-inscripcion" data-event-id="1" user-type="usuario" post-type="publi">
+                        <span>Reservar</span>
+                      </a>
+                    </div>
+                    <!-- /Botones -->
+
+                  </div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="col-lg-4 d-flex justify-content-center">
+                <div class="card d-flex flex-column" style="border: 1px solid #ddd; box-shadow: none; width: 100%;">
+                  
+                  <div class="card-body p-2 d-flex flex-column">
+                    
+                    <a class="h4" style="color: black;" data-bs-toggle="modal" href="#evento2">Espacio Deportivo 2</a>
+
+                    <!-- Etiqueta -->
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="badge bg-body" style="color: gray;">Piscina</span>
+                    </div>
+
+                    <!-- Foto -->
+                    <div class="rounded-1 text-center flex-grow-2 mb-3 mt-3">
+                      <a data-bs-toggle="modal" href="#evento2">
+                        <img class="img-fluid" src="https://i.ibb.co/842tLPz4/piscina1.jpg" alt="Imagen de espacio 2" style="height: 200px; object-fit: cover; border-radius: 5px;"/>
+                      </a>
+                    </div>
+                    
+                    <!-- Descripción -->
+                    <p class="text-body">Piscina pública.</p>
+                    <!-- /Descripción -->
+
+                    <!-- Botones -->
+                    <div class="d-flex gap-3 text-center mt-auto mb-3 justify-content-center">
+                      <a class="col-4 btn btn-facebook d-flex" style="border-radius: 15px;" href="vecino-ver-detalles-espacio.html"> 
+                        <span>Detalles</span>
+                      </a>  
+                      <a href="vecino-disponibilidad-espacio.html" style="border-radius: 15px;" class="col-4 btn btn-primary d-flex btn-inscripcion" data-event-id="2" user-type="usuario" post-type="publi">
+                        <span>Reservar</span>
+                      </a>
+                    </div>
+                    <!-- /Botones -->
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="col-lg-4 d-flex justify-content-center">
+                <div class="card d-flex flex-column" style="border: 1px solid #ddd; box-shadow: none; width: 100%;">
+                  
+                  <div class="card-body p-2 d-flex flex-column">
+                    
+                    <a class="h4" style="color: black;" data-bs-toggle="modal" href="#evento3">Espacio Deportivo 3</a>
+                    
+                    <!-- Etiqueta -->
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="badge bg-body" style="color: gray;">Pista de atletismo</span>
+                    </div>
+                    <!-- /Etiqueta -->
+
+                    <!-- Foto -->
+                    <div class="rounded-1 text-center flex-grow-2 mb-3 mt-3">
+                      <a data-bs-toggle="modal" href="#evento3">
+                        <img class="img-fluid" src="https://i.ibb.co/zT3xL8CW/pista-atletismo.jpg" alt="Imagen de espacio 3" style="height: 200px; object-fit: cover; border-radius: 5px;"/>
+                      </a>
+                    </div>
+                    <!-- /Foto -->
+
+                    <!-- Descripción -->
+                    <p class="text-body">Pista de atletismo.</p>
+                    <!-- /Descripción -->
+                    
+                    <!-- Botones -->
+                    <div class="d-flex gap-3 text-center mt-auto mb-3 justify-content-center">
+                      <a class="col-4 btn btn-facebook d-flex" style="border-radius: 15px;" href="vecino-ver-detalles-espacio.html"> 
+                        <span>Detalles</span>
+                      </a>  
+                      <a href="vecino-disponibilidad-espacio.html" style="border-radius: 15px;" class="col-4 btn btn-primary d-flex btn-inscripcion" data-event-id="3" user-type="usuario" post-type="publi">
+                        <span>Reservar</span>
+                      </a>
+                    </div>
+                    <!-- /Botones -->
+
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="card-footer d-flex justify-content-center">
+          <ul class="pagination m-0">
+            <li class="page-item disabled">
+              <span class="page-link">Anterior</span>
+            </li>
+            <li class="page-item active">
+              <span class="page-link">1</span>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">Siguiente</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-backdrop fade"></div>
+      </div>
+      <!-- / Card Container -->
+
+      <!-- Content wrapper -->
+    </div>
+    <!-- / Layout page -->
+  </div>
+
+
+  <!-- Overlay -->
+  <div class="layout-overlay layout-menu-toggle"></div>
+
+
+  <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+
+
+</div>
+<!-- / Layout wrapper -->
+
+
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+
+<script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+<script src="../../assets/vendor/libs/popper/popper.js"></script>
+<script src="../../assets/vendor/js/bootstrap.js"></script>
+<script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+<script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+<script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="../../assets/vendor/js/menu.js"></script>
+
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+
+<script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
+
+<!-- Main JS -->
+<script src="../../assets/js/main.js"></script>
+
+
+<!-- Page JS -->
+<script src="../../assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script>
+  // Inicializa flatpickr para el rango de fechas
+  flatpickr("#dateRange", {
+    mode: "range",
+    dateFormat: "d-m-Y", // Ajusta el formato de la fecha según tus necesidades
+    locale: {
+      firstDayOfWeek: 1 // Inicia la semana en lunes
+    }
+  });
+</script>
+<script src="../../assets/js/extended-ui-sweetalert2.js"></script>
+
+
+</body>
+
+
+
+<!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template-semi-dark/tables-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2024 23:16:07 GMT -->
+</html>
+
+<!-- beautify ignore:end -->
