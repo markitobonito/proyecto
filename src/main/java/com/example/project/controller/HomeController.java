@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 @Controller
-@RequestMapping("/Usuarios")
+@RequestMapping("/")
 public class HomeController {
     final UsuariosRepository usuariosRepository;
     final RolRepository rolRepository;
@@ -24,12 +24,23 @@ public class HomeController {
         this.rolRepository      = rolRepository;
         this.estadoRepository   = estadoRepository;
     }
-    @GetMapping("/")
+
+
+    @GetMapping("/prueba")
     public String mostrarTodosUsuarios(Model model) {
         List<Usuarios> usuarios = usuariosRepository.findAll(); // Obtiene todos los usuarios
         model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista
         return "hola"; // Usa la misma vista para mostrar todos los DNIs
     }
+
+    @GetMapping("/")
+    public String PagPrincipal() {
+
+        return "registro/login"; // Usa la misma vista para mostrar todos los DNIs
+    }
+
+
+
     @PostMapping("/")
     public String logueo(@RequestParam String username,
                          @RequestParam String password,
@@ -68,11 +79,21 @@ public class HomeController {
 
     }
 
+
+
+
+
     @GetMapping("/registro")
     public String mostrarFormRegistro(Model model) {
         model.addAttribute("usuario", new Usuarios());
         return "registro";        // tu registro.html
     }
+
+
+
+
+
+
     @PostMapping("/registro")
     public String procesarRegistro(
             @RequestParam int dni,
@@ -92,7 +113,7 @@ public class HomeController {
 
         // Asignar rol “vecino” y estado “activo”
         u.setRol( rolRepository.findByRol("vecino") );
-        u.setEstado( estadoRepository.findByNombre("activo") );
+        u.setEstado( estadoRepository.findByEstado("activo") );
 
         usuariosRepository.save(u);
 

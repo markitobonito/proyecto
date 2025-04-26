@@ -1,86 +1,56 @@
 <!DOCTYPE html>
-<!-- =========================================================
-* Municipalidad de San Miguel - Sistema de Reservas de Canchas
-==============================================================
-* Página del Producto: (Licencia requerida para uso comercial)
-=========================================================
- -->
-<!-- beautify ignore:start -->
-<html lang="es" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-semi-dark" data-assets-path="../../assets/" data-template="vertical-menu-template-semi-dark">
-<!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template-semi-dark/auth-two-steps-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2024 23:15:13 GMT -->
-<head>
+<html lang="es"
+      class="light-style layout-wide customizer-hide"
+      dir="ltr"
+      data-theme="theme-semi-dark"
+      data-assets-path="/"  data-template="vertical-menu-template-semi-dark"
+      xmlns:th="http://www.thymeleaf.org"> <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Demo: Verificación en dos pasos Básica - Páginas | Municipalidad de San Miguel</title>
-
-  <meta name="description" content="El dashboard más poderoso y completo construido en Bootstrap 5 para desarrolladores." />
+  <title>Demo: Verificación en dos pasos Básica - Páginas | Municipalidad de San Miguel</title> <meta name="description" content="El dashboard más poderoso y completo construido en Bootstrap 5 para desarrolladores." />
   <meta name="keywords" content="dashboard, verificación, bootstrap 5, diseño, administración">
-  <!-- Canonical SEO -->
   <link rel="canonical" href="https://themeselection.com/item/sneat-dashboard-pro-bootstrap/">
 
-  <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
-  <!-- End Google Tag Manager -->
-  
-  <!-- Favicon -->
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
   <link rel="icon" type="image/x-icon" href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="../../static/vendor/fonts/boxicons.css" />
-  <link rel="stylesheet" href="../../static/vendor/fonts/fontawesome.css" />
-  <link rel="stylesheet" href="../../static/vendor/fonts/flag-icons.css" />
+  <link rel="stylesheet" th:href="@{/vendor/fonts/boxicons.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/fonts/fontawesome.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/fonts/flag-icons.css}" />
 
-  <!-- Core CSS -->
-  <link rel="stylesheet" href="../../static/vendor/css/rtl/core.css" class="template-customizer-core-css" />
-  <link rel="stylesheet" href="../../static/vendor/css/rtl/theme-semi-dark.css" class="template-customizer-theme-css" />
-  <link rel="stylesheet" href="../../static/css/demo.css" />
-  
-  <!-- Vendors CSS -->
-  <link rel="stylesheet" href="../../static/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-  <link rel="stylesheet" href="../../static/vendor/libs/typeahead-js/typeahead.css" />
-  <!-- Vendor -->
-  <link rel="stylesheet" href="../../static/vendor/libs/%40form-validation/form-validation.css" />
+  <link rel="stylesheet" th:href="@{/vendor/css/rtl/core.css}" class="template-customizer-core-css" />
+  <link rel="stylesheet" th:href="@{/vendor/css/rtl/theme-semi-dark.css}" class="template-customizer-theme-css" />
+  <link rel="stylesheet" th:href="@{/css/demo.css}" />
 
-  <!-- Page CSS -->
-  <link rel="stylesheet" href="../../static/vendor/css/pages/page-auth.css">
+  <link rel="stylesheet" th:href="@{/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/libs/typeahead-js/typeahead.css}" />
+  <link rel="stylesheet" th:href="@{/vendor/libs/@form-validation/form-validation.css}" /> <link rel="stylesheet" th:href="@{/vendor/css/pages/page-auth.css}">
 
-  <!-- Helpers -->
-  <script src="../../static/vendor/js/helpers.js"></script>
-  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-  <!--? Template customizer: Para ocultar el personalizador, establezca displayCustomizer en false en config.js.  -->
-  <script src="../../static/vendor/js/template-customizer.js"></script>
-  <!--? Config: Archivo de configuración obligatorio con variables globales y opciones de tema predeterminadas. Establezca su opción de tema preferida en este archivo.  -->
-  <script src="../../static/js/config.js"></script>
-  
+  <script th:src="@{/vendor/js/helpers.js}"></script>
+  <script th:src="@{/vendor/js/template-customizer.js}"></script>
+  <script th:src="@{/js/config.js}"></script>
+
 </head>
 
 <body>
-  <!-- ? PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  
-  <!-- Content -->
-  <div class="authentication-wrapper authentication-basic px-4">
-    <div class="authentication-inner">
-      <!-- Verificación en dos pasos -->
-      <div class="card">
-        <div class="card-body">
-          <!-- Logo -->
-          <div class="app-brand justify-content-center">
-            <a href="index.html" class="app-brand-link gap-2">
-              <span class="app-brand-logo demo">
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe>
+</noscript>
+<div class="authentication-wrapper authentication-basic px-4">
+  <div class="authentication-inner">
+    <div class="card">
+      <div class="card-body">
+        <div class="app-brand justify-content-center">
+          <a th:href="@{/}" class="app-brand-link gap-2"> <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <defs>
                     <path d="M13.7918663,0.358365126 L3.39788168,7.44174259 C0.566865006,9.69408886 -0.379795268,12.4788597 0.557900856,15.7960551 C0.68998853,16.2305145 1.09562888,17.7872135 3.12357076,19.2293357 C3.8146334,19.7207684 5.32369333,20.3834223 7.65075054,21.2172976 L7.59773219,21.2525164 L2.63468769,24.5493413 C0.445452254,26.3002124 0.0884951797,28.5083815 1.56381646,31.1738486 C2.83770406,32.8170431 5.20850219,33.2640127 7.09180128,32.5391577 C8.347334,32.0559211 11.4559176,30.0011079 16.4175519,26.3747182 C18.0338572,24.4997857 18.6973423,22.4544883 18.4080071,20.2388261 C17.963753,17.5346866 16.1776345,15.5799961 13.0496516,14.3747546 L10.9194936,13.4715819 L18.6192054,7.984237 L13.7918663,0.358365126 Z" id="path-1"></path>
@@ -114,77 +84,52 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo text-body fw-bold">Reserva de espacios</span>
+            <span class="app-brand-text demo text-body fw-bold">Reserva de espacios</span> </a>
+        </div>
+        <h4 class="mb-2">Verificación de número 💬</h4>
+        <p class="text-start mb-4">
+          Hemos enviado un código de verificación a su móvil. Ingrese el código a continuación.
+          <span class="fw-medium d-block mt-2">******1234</span> </p>
+        <p class="mb-0 fw-medium">Escriba su código de seguridad de 6 dígitos</p>
+        <form id="twoStepsForm" th:action="@{/verify-otp}" method="POST"> <div class="mb-3">
+          <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
+            <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1" autofocus>
+            <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
+            <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
+            <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
+            <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
+            <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
+          </div>
+          <input type="hidden" name="otp" />
+        </div>
+          <button class="btn btn-primary d-grid w-100 mb-3" type="submit">
+            Verificar mi cuenta
+          </button>
+          <div class="text-center">
+            ¿No recibió el código?
+            <a href="javascript:void(0);"> Reenviar
             </a>
           </div>
-          <!-- /Logo -->
-          <h4 class="mb-2">Verificación de número 💬</h4>
-          <p class="text-start mb-4">
-            Hemos enviado un código de verificación a su móvil. Ingrese el código a continuación.
-            <span class="fw-medium d-block mt-2">******1234</span>
-          </p>
-          <p class="mb-0 fw-medium">Escriba su código de seguridad de 6 dígitos</p>
-          <form id="twoStepsForm"  action="nuevaContrasena.html" method="GET">
-            <div class="mb-3">
-              <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
-                <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1" autofocus>
-                <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-                <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-                <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-                <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-                <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              </div>
-              <!-- Campo oculto que agrupa los dígitos ingresados -->
-              <input type="hidden" name="otp" />
-            </div>
-            <button class="btn btn-primary d-grid w-100 mb-3" type="submit">
-              Verificar mi cuenta
-            </button>
-            <div class="text-center">
-              ¿No recibió el código?
-              <a href="javascript:void(0);">
-                Reenviar
-              </a>
-            </div>
-          </form>
-        </div>
+        </form>
       </div>
-      <!-- /Verificación en dos pasos -->
     </div>
   </div>
 </div>
 
-<!-- / Content -->
 
-<!-- Se han eliminado los bloques que hacen referencia a la plantilla original ("Buy Now") -->
+<script th:src="@{/vendor/libs/jquery/jquery.js}"></script>
+<script th:src="@{/vendor/libs/popper/popper.js}"></script>
+<script th:src="@{/vendor/js/bootstrap.js}"></script>
+<script th:src="@{/vendor/libs/perfect-scrollbar/perfect-scrollbar.js}"></script>
+<script th:src="@{/vendor/libs/hammer/hammer.js}"></script>
+<script th:src="@{/vendor/libs/i18n/i18n.js}"></script>
+<script th:src="@{/vendor/libs/typeahead-js/typeahead.js}"></script>
+<script th:src="@{/vendor/js/menu.js}"></script>
+<script th:src="@{/vendor/libs/cleavejs/cleave.js}"></script> <script th:src="@{/vendor/libs/@form-validation/popular.js}"></script> <script th:src="@{/vendor/libs/@form-validation/bootstrap5.js}"></script> <script th:src="@{/vendor/libs/@form-validation/auto-focus.js}"></script> <script th:src="@{/js/main.js}"></script>
 
-<!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
-<script src="../../static/vendor/libs/jquery/jquery.js"></script>
-<script src="../../static/vendor/libs/popper/popper.js"></script>
-<script src="../../static/vendor/js/bootstrap.js"></script>
-<script src="../../static/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-<script src="../../static/vendor/libs/hammer/hammer.js"></script>
-<script src="../../static/vendor/libs/i18n/i18n.js"></script>
-<script src="../../static/vendor/libs/typeahead-js/typeahead.js"></script>
-<script src="../../static/vendor/js/menu.js"></script>
-<!-- endbuild -->
+<script th:src="@{/js/pages-auth.js}"></script>
+<script th:src="@{/js/pages-auth-two-steps.js}"></script>
 
-<!-- Vendors JS -->
-<script src="../../static/vendor/libs/cleavejs/cleave.js"></script>
-<script src="../../static/vendor/libs/%40form-validation/popular.js"></script>
-<script src="../../static/vendor/libs/%40form-validation/bootstrap5.js"></script>
-<script src="../../static/vendor/libs/%40form-validation/auto-focus.js"></script>
-
-<!-- Main JS -->
-<script src="../../static/js/main.js"></script>
-
-<!-- Page JS -->
-<script src="../../static/js/pages-auth.js"></script>
-<script src="../../static/js/pages-auth-two-steps.js"></script>
-  
 </body>
 
-<!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template-semi-dark/auth-two-steps-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Apr 2024 23:15:13 GMT -->
 </html>
-<!-- beautify ignore:end -->
