@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 @Controller
 @RequestMapping("/")
+
+
 public class HomeController {
     final UsuariosRepository usuariosRepository;
     final RolRepository rolRepository;
@@ -32,6 +34,7 @@ public class HomeController {
         model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista
         return "hola"; // Usa la misma vista para mostrar todos los DNIs
     }
+
 
     @GetMapping("/")
     public String PagPrincipal() {
@@ -65,7 +68,7 @@ public class HomeController {
             String rolName = user.getRol().getRol();
             switch (rolName) {
                 case "Administrador":   return "redirect:/admin/mi_cuenta";
-                case "Usuario final": return "redirect:/vecino/home";
+                case "Usuario Final": return "redirect:/vecino/home";
                 case "SuperAdmin": return "redirect:/superadmin/home";
                 case "Coordinador":return "redirect:/superadmin/coordinador";
                 default:
@@ -75,7 +78,7 @@ public class HomeController {
 
         // Falló autenticación
         model.addAttribute("error", "Credenciales inválidas");
-        return "login";
+        return "registro/login";
 
     }
 
@@ -112,13 +115,51 @@ public class HomeController {
         u.setContrasena(contrasena);
 
         // Asignar rol “vecino” y estado “activo”
-        u.setRol( rolRepository.findByRol("vecino") );
+        u.setRol( rolRepository.findByRol("Usuario final") );
         u.setEstado( estadoRepository.findByEstado("activo") );
 
         usuariosRepository.save(u);
 
         // redirige a tu login.html
-        return "redirect:/login";
+        return "redirect:/";
+    }
+
+
+    @GetMapping("/olvidoContrasena")
+    public String mostrarFormularioOlvidoContrasena() {
+        // Asumiendo que tu archivo HTML está en src/main/resources/templates/registro/olvidoContraseña.html
+        // La cadena devuelta debe coincidir con la ruta desde 'templates/' (sin la extensión .html)
+        return "registro/olvidoContrasena";
+    }
+
+    @PostMapping("/olvido")
+    public String procesarRecuperarContrasena(@RequestParam("email") String identificador,
+                                              Model model) { // El nombre del parámetro aquí puede ser cualquiera, pero el @RequestParam debe coincidir con el name del input
+
+        // Limpiar posibles espacios en blanco al inicio o fin
+        String identificadorLimpio = identificador.trim();
+
+        // Verificar si el identificador contiene solo números
+        boolean esSoloNumeros = true;
+        if (identificadorLimpio.isEmpty()) {
+            esSoloNumeros = false; // Considerar un campo vacío como no numérico o manejarlo como error
+        } else {
+            for (char c : identificadorLimpio.toCharArray()) {
+                if (!Character.isDigit(c)) {
+                    esSoloNumeros = false;
+                    break; // Sale del bucle si encuentra algo que no sea un dígito
+                }
+            }
+        }
+
+        // Redirigir a la vista correspondiente
+        if (esSoloNumeros) {
+            // Si son puros números, va a la vista para verificar número (DNI/Teléfono)
+            return "registro/verificarNumero"; // Devuelve el nombre de la plantilla (ubicada en src/main/resources/templates/registro/verificarNumero.html)
+        } else {
+            // Si no son puros números, asume que es un correo y va a la vista para verificar email
+            return "registro/verificarEmail"; // Devuelve el nombre de la plantilla (ubicada en src/main/resources/templates/registro/VerificarEmail.html)
+        }
     }
 
 }
