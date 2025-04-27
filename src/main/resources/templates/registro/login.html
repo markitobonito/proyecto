@@ -15,7 +15,7 @@
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
-  <link rel="icon" type="image/x-icon" href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/x-icon" th:href="@{/img/icono.ico}" />
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
@@ -38,10 +38,8 @@
 </noscript>
 <div class="authentication-wrapper authentication-cover">
   <div class="authentication-inner row m-0">
-    <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
-      <div class="w-100 d-flex justify-content-center">
-        <img th:src="@{/img/img.png}" class="img-fluid" alt="Imagen de inicio de sesión">
-      </div>
+    <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-0"> <div class="w-100 h-100 d-flex justify-content-center align-items-center"> <img th:src="@{/img/img_1.png}" class="img-fluid" alt="Imagen de inicio de sesión" style="height: 100%; object-fit: cover;">
+    </div>
     </div>
     <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
       <div class="w-px-400 mx-auto">

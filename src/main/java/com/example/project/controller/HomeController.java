@@ -64,10 +64,10 @@ public class HomeController {
             // Redirigir según el rol
             String rolName = user.getRol().getRol();
             switch (rolName) {
-                case "admininstrador":   return "redirect:/administrador/dashboard";
-                case "vecino": return "redirect:/vecino/home";
-                case "superadmin": return "redirect:/superadmin/home";
-                case "coordinador":return "redirect:/superadmin/coordinador";
+                case "Administrador":   return "redirect:/admin/mi_cuenta";
+                case "Usuario final": return "redirect:/vecino/home";
+                case "SuperAdmin": return "redirect:/superadmin/home";
+                case "Coordinador":return "redirect:/superadmin/coordinador";
                 default:
                     return "redirect:/";
             }
@@ -86,7 +86,7 @@ public class HomeController {
     @GetMapping("/registro")
     public String mostrarFormRegistro(Model model) {
         model.addAttribute("usuario", new Usuarios());
-        return "registro";        // tu registro.html
+        return "registro/registro";        // tu registro.html
     }
 
 
