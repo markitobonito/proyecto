@@ -138,7 +138,7 @@ public class HomeController {
 
         // Limpiar posibles espacios en blanco al inicio o fin
         String identificadorLimpio = identificador.trim();
-
+        model.addAttribute("identificador", identificadorLimpio);
         // Verificar si el identificador contiene solo números
         boolean esSoloNumeros = true;
         if (identificadorLimpio.isEmpty()) {
