@@ -3,13 +3,24 @@
       class="light-style layout-wide customizer-hide"
       dir="ltr"
       data-theme="theme-semi-dark"
-      data-assets-path="/"  data-template="vertical-menu-template-semi-dark"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
+      data-assets-path="/"
+      data-template="vertical-menu-template-semi-dark"
+      xmlns:th="http://www.thymeleaf.org"> <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Verificación por número - Municipalidad de San Miguel</title> <meta name="description" content="Verifique su número de celular para recuperar la contraseña." /> <meta name="keywords" content="municipalidad, reservas, canchas, verificación, número"> <link rel="canonical" href="https://tusitiomunicipal.com/registro/verificarNumero"> <link rel="icon" type="image/x-icon" th:href="@{/img/icono.ico}" />
+  <title>Nueva Contraseña - Municipalidad de San Miguel</title>
+
+  <meta name="description" content="Establezca su nueva contraseña para el sistema de reservas de canchas de la Municipalidad de San Miguel." />
+  <meta name="keywords" content="municipalidad, reservas, canchas, nueva contraseña">
+  <link rel="canonical" th:href="@{/registro/nuevaContrasena}">
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5DDHKGP');</script>
+  <link rel="icon" type="image/x-icon" th:href="@{/img/icono.ico}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -26,12 +37,10 @@
   <link rel="stylesheet" th:href="@{/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
   <link rel="stylesheet" th:href="@{/vendor/libs/typeahead-js/typeahead.css}" />
   <link rel="stylesheet" th:href="@{/vendor/libs/@form-validation/form-validation.css}" />
+
   <link rel="stylesheet" th:href="@{/vendor/css/pages/page-auth.css}">
 
   <style>
-    /* Estilo para la imagen de fondo usando th:style en el body */
-    /* Puedes añadir aquí otras reglas CSS si las necesitas solo para esta página */
-
     /* Estilo para el logo - ajusta según necesites */
     .app-brand-logo img {
       height: 40px; /* Tamaño del icono */
@@ -39,8 +48,28 @@
       margin-right: 8px; /* Espacio entre el icono y el texto, ajusta si usas gap-2 */
       vertical-align: middle; /* Alinea verticalmente con el texto */
     }
+    /* Si deseas el overlay, puedes copiar aquí las reglas del overlay que usamos en otras páginas */
+    /* Ejemplo del overlay (ajusta z-index si es necesario para que la tarjeta quede arriba) */
+    /*
+     body {
+        position: relative; // Necesario si el overlay va en el body con posicion absoluta
+     }
+    body::before {
+       content: '';
+       position: fixed; // O absolute si body no tiene min-height 100vh
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.3); // Overlay negro semi-transparente
+       z-index: -1; // Asegura que esté sobre la imagen de fondo pero bajo el contenido
+    }
+    .authentication-wrapper, .authentication-inner {
+        position: relative; // Para asegurar que el contenido esté por encima del overlay
+        z-index: 1; // Asegura que el contenido esté por encima del overlay
+    }
+    */
   </style>
-
 
   <script th:src="@{/vendor/js/helpers.js}"></script>
   <script th:src="@{/vendor/js/template-customizer.js}"></script>
@@ -59,45 +88,43 @@
       <div class="card-body">
         <div class="app-brand justify-content-center">
           <a th:href="@{/}" class="app-brand-link gap-2">
-            <span class="app-brand-logo demo">
+              <span class="app-brand-logo demo">
                 <img th:src="@{/img/icono.ico}" alt="Logo">
-            </span>
-            <span class="app-brand-text demo text-body fw-bold">Reserva de espacios</span> </a>
+              </span>
+            <span class="app-brand-text demo text-body fw-bold">Reserva de espacios</span>
+          </a>
         </div>
-        <h4 class="mb-2">Verificación por número 💬</h4>
-        <p class="text-start mb-4">
-          Hemos enviado un código de verificación a su móvil. Ingrese el código a continuación.
-          <span class="fw-medium d-block mt-2">
-             ******[[${identificador != null && identificador.length() >= 4 ? identificador.substring(identificador.length() - 4) : (identificador != null ? identificador : '')}]]
-          </span>
-        </p>
-        <p class="mb-0 fw-medium">Escriba su código de seguridad de 6 dígitos</p>
-        <form id="twoStepsForm" th:action="@{/verify-otp}" method="POST">
-          <div class="mb-3">
-            <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
-              <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1" autofocus>
-              <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
-              <input type="tel" class="form-control auth-input h-px-50 text-center numeral-mask mx-1 my-2" maxlength="1">
+        <h4 class="mb-2">Establecer Nueva Contraseña</h4> <p class="mb-4">Ingrese su nueva contraseña y confírmela para actualizar su cuenta.</p>
+
+        <form id="passwordChangeForm" th:action="@{/change-password}" method="POST">
+          <div class="mb-3 form-password-toggle">
+            <label class="form-label" for="new-password">Nueva Contraseña</label>
+            <div class="input-group input-group-merge">
+              <input type="password" id="new-password" class="form-control" name="newPassword" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required>
+              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
             </div>
-            <input type="hidden" name="otp" />
+          </div>
+          <div class="mb-3 form-password-toggle">
+            <label class="form-label" for="confirm-password">Confirmar Contraseña</label>
+            <div class="input-group input-group-merge">
+              <input type="password" id="confirm-password" class="form-control" name="confirmPassword" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required>
+              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+            </div>
           </div>
           <button class="btn btn-primary d-grid w-100 mb-3" type="submit">
-            Verificar mi cuenta
+            Guardar nueva contraseña
           </button>
-          <div class="text-center">
-            ¿No recibió el código?
-            <a href="javascript:void(0);"> Reenviar
-            </a>
-          </div>
         </form>
+
+        <div class="text-center">
+          <a th:href="@{/}">
+            Volver al inicio de sesión
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 <script th:src="@{/vendor/libs/jquery/jquery.js}"></script>
 <script th:src="@{/vendor/libs/popper/popper.js}"></script>
 <script th:src="@{/vendor/js/bootstrap.js}"></script>
@@ -106,8 +133,14 @@
 <script th:src="@{/vendor/libs/i18n/i18n.js}"></script>
 <script th:src="@{/vendor/libs/typeahead-js/typeahead.js}"></script>
 <script th:src="@{/vendor/js/menu.js}"></script>
-<script th:src="@{/vendor/libs/cleavejs/cleave.js}"></script> <script th:src="@{/js/main.js}"></script>
+
+<script th:src="@{/vendor/libs/cleavejs/cleave.js}"></script>
+<script th:src="@{/vendor/libs/@form-validation/popular.js}"></script>
+<script th:src="@{/vendor/libs/@form-validation/bootstrap5.js}"></script>
+<script th:src="@{/vendor/libs/@form-validation/auto-focus.js}"></script>
+
+<script th:src="@{/js/main.js}"></script>
 
 <script th:src="@{/js/pages-auth.js}"></script>
-<script th:src="@{/js/pages-auth-two-steps.js}"></script> </body>
+</body>
 </html>

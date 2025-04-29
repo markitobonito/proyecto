@@ -128,7 +128,7 @@ xmlns:th="http://www.thymeleaf.org"> <!-- Añadido xmlns:th -->
         <h4 class="mb-2">Cambio de Contraseña</h4>
         <p class="mb-4">Ingrese su nueva contraseña y confírmela para actualizar su cuenta.</p>
         <!-- Formulario de cambio de contraseña -->
-        <form id="passwordChangeForm" th:action="@{/change-password}" method="POST"> <!-- th:action ajustado -->
+        <form id="passwordChangeForm" th:action="@{/confirmoContrasena}" method="POST"> <!-- th:action ajustado -->
           <div class="mb-3 form-password-toggle">
             <label class="form-label" for="new-password">Nueva Contraseña</label>
             <div class="input-group input-group-merge">
@@ -150,7 +150,7 @@ xmlns:th="http://www.thymeleaf.org"> <!-- Añadido xmlns:th -->
         <div class="text-center">
           ¿No recuerda su contraseña actual?
           <!-- Enlace a login -->
-          <a th:href="@{/login}"> <!-- Usando th:href -->
+          <a th:href="@{/}"> <!-- Usando th:href -->
             Inicie sesión
           </a>
         </div>

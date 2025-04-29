@@ -161,4 +161,32 @@ public class HomeController {
         }
     }
 
+
+    @PostMapping("/confirmoContrasena")
+    public String comfirm(@RequestParam("confirmPassword") String confirmPass,
+                          @RequestParam("newPassword") String newPass) { // Recibe el parámetro 'otp'
+
+        return "registro/login";
+    }
+
+    @PostMapping("/renovarContrasena")
+    public String procesarVerificacionOtp(@RequestParam("otp") String otpCode) { // Recibe el parámetro 'otp'
+
+        // Guardar el código OTP recibido en una variable local
+        String receivedOtp = otpCode;
+
+        // Aquí podrías (en el futuro) agregar lógica para:
+        // - Buscar al usuario basado en el número/correo original (que necesitarías pasar de alguna forma, quizás en la sesión o como otro parámetro oculto).
+        // - Verificar si el otpCode recibido coincide con el que le enviaste al usuario.
+        // - Invalidar el código OTP después de su uso.
+        // - Si el OTP es válido, permitirle al usuario proceder a cambiar su contraseña.
+
+        // Por ahora, solo guardar y redirigir a la página de nueva contraseña
+        System.out.println("Código OTP recibido: " + receivedOtp); // Opcional: imprimir para verificar
+
+        // Redirigir a la página para establecer la nueva contraseña
+        // Spring buscará la plantilla en src/main/resources/templates/registro/nuevaContrasena.html
+        return "registro/nuevaContrasena";
+    }
+
 }
