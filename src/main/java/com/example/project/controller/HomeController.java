@@ -135,7 +135,6 @@ public class HomeController {
     @PostMapping("/olvido")
     public String procesarRecuperarContrasena(@RequestParam("email") String identificador,
                                               Model model) { // El nombre del parámetro aquí puede ser cualquiera, pero el @RequestParam debe coincidir con el name del input
-
         // Limpiar posibles espacios en blanco al inicio o fin
         String identificadorLimpio = identificador.trim().replaceAll("\\s+", "");
         model.addAttribute("identificador", identificadorLimpio);
