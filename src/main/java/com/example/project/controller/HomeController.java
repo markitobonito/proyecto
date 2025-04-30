@@ -166,7 +166,7 @@ public class HomeController {
     public String comfirm(@RequestParam("confirmPassword") String confirmPass,
                           @RequestParam("newPassword") String newPass) { // Recibe el parámetro 'otp'
 
-        return "registro/login";
+        return "redirect:/";
     }
 
     @PostMapping("/renovarContrasena")
