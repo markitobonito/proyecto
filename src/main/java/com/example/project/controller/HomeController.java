@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Optional;
 @Controller
 @RequestMapping("/")
-
-
 public class HomeController {
     final UsuariosRepository usuariosRepository;
     final RolRepository rolRepository;
@@ -36,11 +34,13 @@ public class HomeController {
     }
 
 
+
     @GetMapping("/")
     public String PagPrincipal() {
 
         return "registro/login"; // Usa la misma vista para mostrar todos los DNIs
     }
+
 
 
 
@@ -70,7 +70,7 @@ public class HomeController {
                 case "Administrador":   return "redirect:/admin/mi_cuenta";
                 case "Usuario Final": return "redirect:/vecino/home";
                 case "SuperAdmin": return "redirect:/superadmin/home";
-                case "Coordinador":return "redirect:/superadmin/coordinador";
+                case "Coordinador":return "redirect:/coordinador/";
                 default:
                     return "redirect:/";
             }
@@ -91,9 +91,6 @@ public class HomeController {
         model.addAttribute("usuario", new Usuarios());
         return "registro/registro";        // tu registro.html
     }
-
-
-
 
 
 
