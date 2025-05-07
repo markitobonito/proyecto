@@ -29,6 +29,38 @@ public class VecinoController {
         return "vecino/principal"; // Usa la misma vista para mostrar todos los DNIs
     }
 
+    @GetMapping("/pago")
+    public String pago(Model model) {
+        List<Usuarios> usuarios = usuariosRepository.findAll(); // Obtiene todos los usuarios
+        model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista
+        return "vecino/pago"; // Usa la misma vista para mostrar todos los DNIs
+    }
 
+    @GetMapping("/disponibilidad")
+    public String disponibilidad(Model model) {
+        List<Usuarios> usuarios = usuariosRepository.findAll(); // Obtiene todos los usuarios
+        model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista
+        return "vecino/vecino-disponibilidad-espacio"; // Usa la misma vista para mostrar todos los DNIs
+    }
 
+    @GetMapping("/resumen")
+    public String resumen(Model model) {
+        List<Usuarios> usuarios = usuariosRepository.findAll(); // Obtiene todos los usuarios
+        model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista
+        return "vecino/vecino-resumen-reserva"; // Usa la misma vista para mostrar todos los DNIs
+    }
+
+    @GetMapping("/detalles")
+    public String detalles(Model model) {
+        List<Usuarios> usuarios = usuariosRepository.findAll(); // Obtiene todos los usuarios
+        model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista
+        return "vecino/vecino-ver-detalles-espacio"; // Usa la misma vista para mostrar todos los DNIs
+    }
+
+    @GetMapping("/verEspacios")
+    public String verEspacios(Model model) {
+        List<Usuarios> usuarios = usuariosRepository.findAll(); // Obtiene todos los usuarios
+        model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista
+        return "vecino/vecino-ver-espacios"; // Usa la misma vista para mostrar todos los DNIs
+    }
 }
