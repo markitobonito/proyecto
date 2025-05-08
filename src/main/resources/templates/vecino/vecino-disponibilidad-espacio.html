@@ -65,145 +65,124 @@
                         <span class="text-uppercase text-heading" style="margin-left: 10px; margin-right: 2px; font-weight: bold;">Vecino</span>
 
 
-                        <a href="app-calendar.html" class="stretched-link">Calendar</a>
-                        <small class="text-muted mb-0">Appointments</small>
-                </div>
-        </div>
-    </div>
-</div>
-</li>
--->
-<li class="nav-item navbar-dropdown dropdown-user dropdown">
-    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-        <div class="avatar">
-            <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
-        </div>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end">
-        <li>
-            <a class="dropdown-item" th:href="@{/vecino/perfil}"> <div class="d-flex align-items-center">
-                <div class="flex-shrink-0 me-3">
-                    <div class="avatar">
-                        <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
-                    </div>
-                </div>
-                <div class="flex-grow-1">
-                    <span class="fw-medium d-block" style="color: black;">Vecino</span>
-                </div>
-            </div>
-            </a>
-        </li>
-        <li>
-            <div class="dropdown-divider"></div>
-        </li>
-        <li>
-            <a class="dropdown-item" th:href="@{/vecino/seguridad}"> <i class="bx bx-lock me-2" style="color: black;"></i>
-                <span class="align-middle" style="color: black;">Seguridad</span>
-            </a>
-        </li>
-
-        <li>
-            <div class="dropdown-divider"></div>
-        </li>
-
-        <li>
-            <a class="dropdown-item" th:href="@{/logout}"> <i class="bx bx-power-off me-2" style="color: rgb(231, 0, 0);"></i>
-                <span class="align-middle" style="color: rgb(231, 0, 0);">Cerrar Sesión</span>
-            </a>
-        </li>
-    </ul>
-</li>
-</ul>
-</div>
-
-
-<div class="navbar-search-wrapper search-input-wrapper  d-none">
-    <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search...">
-    <i class="bx bx-x bx-sm search-toggler cursor-pointer"></i>
-</div>
-
-
-</nav>
-
-
-
-<!-- / Navbar -->
-
-
-
-<!-- Content wrapper -->
-<div class="content-wrapper">
-
-    <div class="container-xxl flex-grow-1 container-p-y">
-
-
-        <div class="card app-calendar-wrapper">
-            <div class="row g-0">
-
-                <div class="col app-calendar-content">
-                    <div class="card shadow-none border-0">
-                        <div class="card-header">
-                            <h1>Disponibilidad del Espacio 1</h1>
+                    </ul> <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                        <div class="avatar">
+                            <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
                         </div>
-                        <div class="card-body pb-0">
-                            <div id="calendar"></div>
-                        </div>
-
-                    </div>
-                    <div class="app-overlay"></div>
-                    <div class="offcanvas offcanvas-end event-sidebar" tabindex="-1" id="addEventSidebar" aria-labelledby="addEventSidebarLabel">
-                        <div class="offcanvas-header border-bottom">
-                            <h5 class="offcanvas-title mb-2" id="addEventSidebarLabel">Reservar Espacio</h5>
-                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <form class="event-form pt-0" id="eventForm" onsubmit="return false">
-                                <div class="mb-3">
-                                    <h6>Espacio 1</h6>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="eventStartDate">Fecha Inicio</label>
-                                    <input type="text" class="form-control" id="eventStartDate" name="eventStartDate" placeholder="Fecha Inicio" />
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="eventEndDate">Fecha Fin</label>
-                                    <input type="text" class="form-control" id="eventEndDate" name="eventEndDate" placeholder="Fecha Fin" />
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="paymentMethod">Método de Pago</label>
-                                    <select class="form-select" id="paymentMethod" name="paymentMethod">
-                                        <option value="online">Pago en línea</option>
-                                        <option value="deposit">Depósito bancario</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3 d-flex justify-content-sm-between justify-content-start my-4">
-                                    <div>
-                                        <button type="submit" class="btn btn-primary btn-add-event me-sm-3 me-1">Agregar</button>
-                                        <button type="reset" class="btn btn-label-secondary btn-cancel me-sm-0 me-1" data-bs-dismiss="offcanvas">Cancelar</button>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" th:href="@{/vecino/perfil}"> <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar">
+                                        <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
                                     </div>
                                 </div>
-                            </form>
+                                <div class="flex-grow-1">
+                                    <span class="fw-medium d-block" style="color: black;">Vecino</span>
+                                </div>
+                            </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/vecino/seguridad}"> <i class="bx bx-lock me-2" style="color: black;"></i>
+                                <span class="align-middle" style="color: black;">Seguridad</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" th:href="@{/logout}"> <i class="bx bx-power-off me-2" style="color: rgb(231, 0, 0);"></i>
+                                <span class="align-middle" style="color: rgb(231, 0, 0);">Cerrar Sesión</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                </div> <div class="navbar-search-wrapper search-input-wrapper  d-none">
+                <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search...">
+                <i class="bx bx-x bx-sm search-toggler cursor-pointer"></i>
+            </div>
+
+
+            </nav>
+            <div class="content-wrapper">
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+
+
+                    <div class="card app-calendar-wrapper">
+                        <div class="row g-0">
+
+                            <div class="col app-calendar-content">
+                                <div class="card shadow-none border-0">
+                                    <div class="card-header">
+                                        <h1>Disponibilidad del Espacio 1</h1>
+                                    </div>
+                                    <div class="card-body pb-0">
+                                        <div id="calendar"></div>
+                                    </div>
+
+                                </div>
+                                <div class="app-overlay"></div>
+                                <div class="offcanvas offcanvas-end event-sidebar" tabindex="-1" id="addEventSidebar" aria-labelledby="addEventSidebarLabel">
+                                    <div class="offcanvas-header border-bottom">
+                                        <h5 class="offcanvas-title mb-2" id="addEventSidebarLabel">Reservar Espacio</h5>
+                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                        <form class="event-form pt-0" id="eventForm" onsubmit="return false">
+                                            <div class="mb-3">
+                                                <h6>Espacio 1</h6>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="eventStartDate">Fecha Inicio</label>
+                                                <input type="text" class="form-control" id="eventStartDate" name="eventStartDate" placeholder="Fecha Inicio" />
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="eventEndDate">Fecha Fin</label>
+                                                <input type="text" class="form-control" id="eventEndDate" name="eventEndDate" placeholder="Fecha Fin" />
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="paymentMethod">Método de Pago</label>
+                                                <select class="form-select" id="paymentMethod" name="paymentMethod">
+                                                    <option value="online">Pago en línea</option>
+                                                    <option value="deposit">Depósito bancario</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3 d-flex justify-content-sm-between justify-content-start my-4">
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary btn-add-event me-sm-3 me-1">Agregar</button>
+                                                    <button type="reset" class="btn btn-label-secondary btn-cancel me-sm-0 me-1" data-bs-dismiss="offcanvas">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+                <div class="content-backdrop fade"></div>
             </div>
         </div>
-
     </div>
-    <div class="content-backdrop fade"></div>
-</div>
-</div>
-</div>
 
 
-<div class="layout-overlay layout-menu-toggle"></div>
+    <div class="layout-overlay layout-menu-toggle"></div>
+    <div class="drag-target"></div>
 
-
-<div class="drag-target"></div>
 
 </div>
 <script th:src="@{/vendor/libs/jquery/jquery.js}"></script>
@@ -234,5 +213,3 @@
 </body>
 
 </html>
-<!-- beautify ignore:end -->
-
