@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Mi Perfil</title>
+    <title>Asistencia</title>
 
     
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 Admin Dashboard built for developers!" />
@@ -297,9 +297,9 @@
 <div class="row">
   <div class="col-md-12">
     <ul class="nav nav-pills flex-column flex-sm-row mb-4">
-        <li class="nav-item"><a class="nav-link" href="coordinador-perfil.html"><i class='bx bx-user me-1'></i> Perfil</a></li>
-        <li class="nav-item"><a class="nav-link active" href="coordinador-tabla-espacios.html"><i class='bx bx-map-pin me-1'></i> Espacios Deportivos</a></li>
-        <li class="nav-item"><a class="nav-link" href="coordinador-asistencia.html"><i class='bx bx-user-check me-1'></i> Asistencia</a></li>
+      <li class="nav-item"><a class="nav-link" href="coordinador-perfil.html"><i class='bx bx-user me-1'></i> Perfil</a></li>
+      <li class="nav-item"><a class="nav-link" href="coordinador-tabla-espacios.html"><i class='bx bx-map-pin me-1'></i> Espacios Deportivos</a></li>
+      <li class="nav-item"><a class="nav-link active" href="coordinador-asistencia.html"><i class='bx bx-user-check me-1'></i> Asistencia</a></li>
     </ul>
   </div>
 </div>
@@ -308,193 +308,60 @@
 <!-- User Profile Content -->
 <div class="row">
 
-  <div class="col-xl-12 col-lg-12 col-md-12">
+  <div class="col-xl-3 col-lg-7 col-md-5">
 
-    <!-- Lista de Espacios -->
+    <!-- Botón de Asistencia -->
     <div class="card mb-4">
-      <h5 class="card-header">Lista de Espacios Deportivos</h5>
-      <div class="table-responsive text-nowrap">
+        <h5 class="card-header">Marcar Asistencia</h5>
+        <div class="card-body text-center">
+          <button id="markAttendance" class="btn btn-primary">Marcar Asistencia</button>
+          <div id="locationStatus" class="text-muted mb-3"></div>
+        </div>
+    </div>
+    <!--/ Botón de Asistencia -->
+  </div>
+
+  <div class="col-xl-9 col-lg-7 col-md-7">
+
+    <!-- Registro de Asistencia -->
+    
+    <div class="card mb-4">
+      <h5 class="card-header">Historial de Asistencia</h5>
+      
+      <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th></th>
-              <th>Nombre</th>
-              <th>Estado</th>
-              <th>Ubicación</th>
-              <th>Opciones</th>
+                <th>Fecha</th>
+                <th>Hora de Entrada</th>
+                <th>Hora de Salida</th>
+                <th>Geolocalización</th>
+                <th>Estado</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
             <tr>
-              <td></td>
-              <td><span class="fw-medium">Espacio 1</span></td>
-              <td><span class="badge bg-label-success me-1">Disponible</span></td>
-              <td>Av. La Marina 123</td>
-              <td>
-                <button type="button" class="btn btn-label-primary btn-icon" title="Ver detalles"><i class="bx bx-show"></i></button>
-                <button type="button" class="btn btn-label-warning btn-icon" data-bs-toggle="dropdown" aria-expanded="false" title="Modificar estado"><i class="bx bx-pencil"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="javascript:void(0);">Disponible</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);">Ocupado</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);">Mantenimiento</a></li>
-                </ul>
-                <button type="button" class="btn btn-label-info btn-icon" data-bs-toggle="modal" data-bs-target="#modal1" title="Agregar observación"><i class="bx bx-comment"></i></button>
-              </td>
+                <td>2025-05-08</td>
+                <td>09:00 AM</td>
+                <td>05:00 PM</td>
+                <td>12.0456, -77.0324</td>
+                <td>Presente</td>
             </tr>
             <tr>
-              <td></td>
-              <td><span class="fw-medium">Espacio 2</span></td>
-              <td><span class="badge bg-label-warning me-1">Mantenimiento</span></td>
-              <td>Av. Brasil 456</td>
-              <td>
-                <button type="button" class="btn btn-label-primary btn-icon" title="Ver detalles"><i class="bx bx-show"></i></button>
-                <button type="button" class="btn btn-label-warning btn-icon" data-bs-toggle="dropdown" aria-expanded="false" title="Modificar estado"><i class="bx bx-pencil"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="javascript:void(0);">Disponible</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);">Ocupado</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);">Mantenimiento</a></li>
-                </ul>
-                <button type="button" class="btn btn-label-info btn-icon" data-bs-toggle="modal" data-bs-target="#modal2" title="Agregar observación"><i class="bx bx-comment"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><span class="fw-medium">Espacio 3</span></td>
-              <td><span class="badge bg-label-danger me-1">Ocupado</span></td>
-              <td>Av. Arequipa 789</td>
-              <td>
-                <button type="button" class="btn btn-label-primary btn-icon" title="Ver detalles"><i class="bx bx-show"></i></button>
-                <button type="button" class="btn btn-label-warning btn-icon" data-bs-toggle="dropdown" aria-expanded="false" title="Modificar estado"><i class="bx bx-pencil"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="javascript:void(0);">Disponible</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);">Ocupado</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);">Mantenimiento</a></li>
-                </ul>
-                <button type="button" class="btn btn-label-info btn-icon" data-bs-toggle="modal" data-bs-target="#modal3" title="Agregar observación"><i class="bx bx-comment"></i></button>
-              </td>
-            </tr>
+                <td>2025-05-07</td>
+                <td>08:30 AM</td>
+                <td>-</td>
+                <td>12.0457, -77.0325</td>
+                <td>En curso</td>
+              </tr>
           </tbody>
           
         </table>
       </div>
     </div>
-    <!--/ Projects table -->
+    <!--/ Registro de Asistencia -->
   </div>
 </div>
-
-        <!-- Modal 1 -->
-        <div class="modal-onboarding modal fade animate__animated" id="modal1" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content text-center">
-                <div class="modal-header border-0">
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                  </button>
-                </div>
-                <div class="modal-body p-0">
-                  <div class="onboarding-media">
-                    <div class="mx-2">
-                      <img src="https://i.ibb.co/842tLPz4/piscina1.jpg" alt="Espacio 1" width="335" class="img-fluid">
-                    </div>
-                  </div>
-                  <div class="onboarding-content mb-0">
-                    <h4 class="onboarding-title text-body">Espacio Deportivo 1</h4>
-                    <div class="onboarding-info">Agrega desde aquí alguna observación que tengas sobre este Espacio Deportivo.</div>
-                    <form>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="mb-3">
-                            <label for="observacion" class="form-label">Observaciones</label>
-                            <textarea class="form-control" id="observacion" rows="5" placeholder="Ingresa tu(s) observación(es)..."></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="modal-footer border-0">
-                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary">Agregar</button>
-                </div>
-              </div>
-            </div>
-        </div>
-        <!--/ Modal 1 -->
-
-        <!-- Modal 2 -->
-        <div class="modal-onboarding modal fade animate__animated" id="modal2" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content text-center">
-                <div class="modal-header border-0">
-                  <button type="button" class="btn-close" data-bs-dismiss="modal2" aria-label="Close">
-                  </button>
-                </div>
-                <div class="modal-body p-0">
-                  <div class="onboarding-media">
-                    <div class="mx-2">
-                      <img src="https://i.ibb.co/xKh4qBGj/basquet.jpg" alt="Espacio 2" width="335" class="img-fluid">
-                    </div>
-                  </div>
-                  <div class="onboarding-content mb-0">
-                    <h4 class="onboarding-title text-body">Espacio Deportivo 2</h4>
-                    <div class="onboarding-info">Agrega desde aquí alguna observación que tengas sobre este Espacio Deportivo.</div>
-                    <form>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="mb-3">
-                            <label for="observacion" class="form-label">Observaciones</label>
-                            <textarea class="form-control" id="observacion" rows="5" placeholder="Ingresa tu(s) observación(es)..."></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="modal-footer border-0">
-                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary">Agregar</button>
-                </div>
-              </div>
-            </div>
-        </div>
-        <!--/ Modal 2 -->
-        <!-- Modal 2 -->
-        <div class="modal-onboarding modal fade animate__animated" id="modal3" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content text-center">
-                <div class="modal-header border-0">
-                  <button type="button" class="btn-close" data-bs-dismiss="modal3" aria-label="Close">
-                  </button>
-                </div>
-                <div class="modal-body p-0">
-                  <div class="onboarding-media">
-                    <div class="mx-2">
-                      <img src="https://i.ibb.co/ycqHL5cR/sintetica.jpg" alt="Espacio 3" width="335" class="img-fluid">
-                    </div>
-                  </div>
-                  <div class="onboarding-content mb-0">
-                    <h4 class="onboarding-title text-body">Espacio Deportivo 3</h4>
-                    <div class="onboarding-info">Agrega desde aquí alguna observación que tengas sobre este Espacio Deportivo.</div>
-                    <form>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="mb-3">
-                            <label for="observacion" class="form-label">Observaciones</label>
-                            <textarea class="form-control" id="observacion" rows="5" placeholder="Ingresa tu(s) observación(es)..."></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="modal-footer border-0">
-                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary">Agregar</button>
-                </div>
-              </div>
-            </div>
-        </div>
-        <!--/ Modal 3 -->
-
 
 <!--/ User Profile Content -->
 
