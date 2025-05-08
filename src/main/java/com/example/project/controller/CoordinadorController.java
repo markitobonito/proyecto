@@ -36,4 +36,29 @@ public class CoordinadorController {
         model.addAttribute("asistencias", asistencias);
         return "coordinador/coordinador-asistencia";
     }
+
+    @PostMapping("/asistencia/registrar")
+    public @ResponseBody Map<String, Object> registrarAsistencia(@RequestBody Map<String, Object> payload) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            double latitud = Double.parseDouble(payload.get("latitud").toString());
+            double longitud = Double.parseDouble(payload.get("longitud").toString());
+            String fecha = payload.get("fecha").toString();
+            String horaEntrada = payload.get("horaEntrada").toString();
+
+            Geolocalizacion asistencia = new Geolocalizacion();
+            asistencia.setFecha(fecha);
+            asistencia.setHoraEntrada(horaEntrada);
+            asistencia.setLatitud(latitud);
+            asistencia.setLongitud(longitud);
+            asistencia.setEstado("En curso");
+            geolocalizacionRepository.save(asistencia);
+
+            response.put("success", true);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("error", e.getMessage());
+        }
+        return response;
+    }
 }
