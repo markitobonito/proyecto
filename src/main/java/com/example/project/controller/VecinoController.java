@@ -22,7 +22,7 @@ public class VecinoController {
         this.rolRepository      = rolRepository;
         this.estadoRepository   = estadoRepository;
     }
-    @GetMapping("/")
+    @GetMapping("/home")
     public String principal(Model model) {
         List<Usuarios> usuarios = usuariosRepository.findAll(); // Obtiene todos los usuarios
         model.addAttribute("usuarios", usuarios); // Pasa la lista a la vista

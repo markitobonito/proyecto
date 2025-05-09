@@ -24,7 +24,11 @@ public class HomeController {
         this.rolRepository      = rolRepository;
         this.estadoRepository   = estadoRepository;
     }
+    @GetMapping("/")
+    public String pagPrincipal() {
 
+        return "registro/principal"; // Usa la misma vista para mostrar todos los DNIs
+    }
 
     @GetMapping("/prueba")
     public String mostrarTodosUsuarios(Model model) {
@@ -35,8 +39,8 @@ public class HomeController {
 
 
 
-    @GetMapping("/")
-    public String PagPrincipal() {
+    @GetMapping("/login")
+    public String login() {
 
         return "registro/login"; // Usa la misma vista para mostrar todos los DNIs
     }
@@ -44,7 +48,7 @@ public class HomeController {
 
 
 
-    @PostMapping("/")
+    @PostMapping("/login")
     public String logueo(@RequestParam String username,
                          @RequestParam String password,
                          Model model,
@@ -72,7 +76,7 @@ public class HomeController {
                 case "SuperAdmin": return "redirect:/superadmin/home";
                 case "Coordinador":return "redirect:/coordinador/";
                 default:
-                    return "redirect:/";
+                    return "redirect:/login";
             }
         }
 
@@ -118,7 +122,7 @@ public class HomeController {
         usuariosRepository.save(u);
 
         // redirige a tu login.html
-        return "redirect:/";
+        return "redirect:/login";
     }
 
 
@@ -163,7 +167,7 @@ public class HomeController {
     public String comfirm(@RequestParam("confirmPassword") String confirmPass,
                           @RequestParam("newPassword") String newPass) { // Recibe el parámetro 'otp'
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @PostMapping("/renovarContrasena")
@@ -184,6 +188,11 @@ public class HomeController {
         // Redirigir a la página para establecer la nueva contraseña
         // Spring buscará la plantilla en src/main/resources/templates/registro/nuevaContrasena.html
         return "registro/nuevaContrasena";
+    }
+    @GetMapping("/logout")
+    public String logout() {
+
+        return "registro/login"; // Usa la misma vista para mostrar todos los DNIs
     }
 
 }
