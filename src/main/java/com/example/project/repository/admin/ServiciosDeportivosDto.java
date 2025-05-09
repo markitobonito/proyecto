@@ -6,4 +6,7 @@ public interface ServiciosDeportivosDto {
     String getLugar();          // l.lugar AS Lugar
     Double getCosto();          // r.costo AS Costo
     String getEstadoEspacio();  // ee.estado AS EstadoEspacio
+    String getFoto();
+    String getObservaciones();
+    String getNombre();
 }

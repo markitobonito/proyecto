@@ -11,6 +11,7 @@ public interface ServiciosDeportivosDisponiblesRepository extends JpaRepository<
     @Query(value = """
         SELECT 
             r.idReserva AS id,
+            e.nombre as nombre,
             e.tipo AS tipo,
             l.lugar AS lugar,
             r.costo AS costo,
