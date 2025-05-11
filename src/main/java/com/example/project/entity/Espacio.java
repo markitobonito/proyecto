@@ -23,6 +23,12 @@ public class Espacio {
     @JoinColumn(name="idEstadoEspacio")
     private EstadoEspacio idEstadoEspacio;
 
-    @Column(name="tipo")
-    private String tipo;
+    @Column(name="costo")
+    private Double costo;
+    @Column(name="foto1")
+    private byte[] foto1;
+    @Column(name="foto2")
+    private byte[] foto2;
+    @Column(name="foto3")
+    private byte[] foto3;
 }
