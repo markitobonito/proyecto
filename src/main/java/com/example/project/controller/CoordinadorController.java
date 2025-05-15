@@ -36,6 +36,7 @@ public class CoordinadorController {
     @Autowired
     private GeolocalizacionRepository geolocalizacionRepository;
 
+
     @GetMapping("/perfil")
     public String showCoordinadorProfile(Model model, HttpSession session) {
         Usuarios coordinador = (Usuarios) session.getAttribute("loggedUser");
@@ -48,6 +49,11 @@ public class CoordinadorController {
             System.out.println("Usuario no es Coordinador");
             return "redirect:/login";
         }
+
+        Usuarios usuario = (Usuarios) session.getAttribute("loggedUser");
+        model.addAttribute("usuario", usuario);
+
+
         List<Actividad> actividades = actividadRepository.findByUsuarioOrderByFechaDesc(coordinador);
         model.addAttribute("coordinador", coordinador);
         model.addAttribute("actividades", actividades);
@@ -60,6 +66,10 @@ public class CoordinadorController {
         if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
             return "redirect:/login";
         }
+
+        Usuarios usuario = (Usuarios) session.getAttribute("loggedUser");
+        model.addAttribute("usuario", usuario);
+
         List<Espacio> espacios = espacioRepositoryCoord.findAll();
         model.addAttribute("coordinador", coordinador);
         model.addAttribute("espacios", espacios);
@@ -80,6 +90,9 @@ public class CoordinadorController {
             return "redirect:/coordinador/espacios"; // o mostrar error
         }
 
+        Usuarios usuario = (Usuarios) session.getAttribute("loggedUser");
+        model.addAttribute("usuario", usuario);
+
         model.addAttribute("espacio", espacio);
         return "coordinador/coordinador-ver-detalles2";
     }
@@ -91,6 +104,10 @@ public class CoordinadorController {
         if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
             return "redirect:/login";
         }
+
+        Usuarios usuario = (Usuarios) session.getAttribute("loggedUser");
+        model.addAttribute("usuario", usuario);
+
 
         // Obtener todas las asistencias del coordinador, ordenadas por fecha descendente
         List<Geolocalizacion> asistencias = geolocalizacionRepository.findByCoordinadorOrderByFechaDesc(coordinador);
