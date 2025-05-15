@@ -78,7 +78,7 @@ public class HomeController {
                 case "Administrador":   return "redirect:/admin/mi_cuenta";
                 case "Usuario Final": return "redirect:/vecino/home";
                 case "SuperAdmin": return "redirect:/superadmin/home";
-                case "Coordinador":return "redirect:/coordinador/";
+                case "Coordinador":return "redirect:/coordinador/perfil";
                 default:
                     return "redirect:/login";
             }
