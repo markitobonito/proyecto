@@ -107,13 +107,13 @@
                                         <a class="dropdown-item" href="/coordinador/perfil">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
+                                                    <div class="avatar">
                                                         <img th:src="@{/img/avatars/1.png}" alt class="w-px-40 h-auto rounded-circle">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span class="fw-medium d-block" th:text="${coordinador.nombres} + ' ' + ${coordinador.apellidos}"></span>
-                                                    <small class="text-muted">Coordinador</small>
+                                                    <small class="text-muted" th:text="${coordinador.rol.rol}"></small>
                                                 </div>
                                             </div>
                                         </a>
@@ -189,8 +189,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-sm-row mb-4">
-                                    <li class="nav-item"><a class="nav-link active" href="/coordinador/perfil"><i class='bx bx-user me-1'></i> Perfil</a></li>
-                                    <li class="nav-item"><a class="nav-link active" href="coordinador/espacios"><i class='bx bx-map-pin me-1'></i> Espacios Deportivos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/coordinador/perfil"><i class='bx bx-user me-1'></i> Perfil</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="/coordinador/espacios"><i class='bx bx-map-pin me-1'></i> Espacios Deportivos</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-user-check me-1'></i> Asistencia</a></li>
                                 </ul>
                             </div>
@@ -211,26 +211,41 @@
                                             </thead>
                                             <tbody class="table-border-bottom-0">
                                                 <tr th:each="espacio : ${espacios}">
-                                                    <td></td>
-                                                    <td><span class="fw-medium" th:text="${espacio.nombreEspacio}"></span></td>
+                                                    <td><span class="fw-medium" th:text="${espacio.nombre}"></span></td>
                                                     <td>
-                                                        <span class="badge me-1" th:classappend="${espacio.idEstadoEspacio.estado == 'Disponible'} ? 'bg-label-success' : ${espacio.idEstadoEspacio.estado == 'Ocupado'} ? 'bg-label-danger' : 'bg-label-warning'" th:text="${espacio.idEstadoEspacio.estado == 'Mantenimiento'}"></span>
+                                                        <span class="badge me-1"
+                                                              th:classappend="${espacio.idEstadoEspacio.estado == 'Disponible'} ? 'bg-label-success' :
+                                                                              (${espacio.idEstadoEspacio.estado == 'Ocupado'} ? 'bg-label-danger' :
+                                                                              (${espacio.idEstadoEspacio.estado == 'Mantenimiento'} ? 'bg-label-warning' : 'bg-label-secondary'))"
+                                                              th:text="${espacio.idEstadoEspacio.estado}">
+                                                        </span>
                                                     </td>
-                                                    <td th:text="${espacio.idLugar.nombreLugar}"></td>
+
+                                                    <td th:text="${espacio.idLugar.lugar}"></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-label-primary btn-icon" title="Ver detalles"><i class="bx bx-show"></i></button>
+                                                        <!-- Botón en cada fila de la tabla -->
+                                                        <a th:href="@{/coordinador/detalles(id=${espacio.idEspacio})}"
+                                                           class="btn btn-label-primary btn-icon" title="Ver detalles">
+                                                            <i class="bx bx-show"></i>
+                                                        </a>
                                                         <button type="button" class="btn btn-label-warning btn-icon" data-bs-toggle="dropdown" aria-expanded="false" title="Modificar estado"><i class="bx bx-pencil"></i></button>
                                                         <ul class="dropdown-menu">
                                                             <li><a class="dropdown-item" th:onclick="'cambiarEstado(' + ${espacio.idEspacio} + ', \'Disponible\')'" href="#">Disponible</a></li>
                                                             <li><a class="dropdown-item" th:onclick="'cambiarEstado(' + ${espacio.idEspacio} + ', \'Ocupado\')'" href="#">Ocupado</a></li>
                                                             <li><a class="dropdown-item" th:onclick="'cambiarEstado(' + ${espacio.idEspacio} + ', \'Mantenimiento\')'" href="#">Mantenimiento</a></li>
                                                         </ul>
+
                                                         <button type="button" class="btn btn-label-info btn-icon"
-                                                                th:onclick="'mostrarPopup(' + ${espacio.idEspacio} + ', \'' + ${espacio.nombreEspacio} + '\', \'' + ${#strings.toString(espacio.foto1)} + '\')'"
+                                                                data-bs-toggle="modal"
+                                                                th:attr="data-bs-target='#modal-observacion-' + ${espacio.idEspacio}"
                                                                 title="Agregar observación">
                                                             <i class="bx bx-comment"></i>
                                                         </button>
+
                                                     </td>
+                                                </tr>
+                                                <tr th:if="${#lists.isEmpty(espacios)}">
+                                                    <td colspan="4">No hay espacios disponibles.</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -238,43 +253,42 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal único para añadir observación -->
-                        <div class="modal-onboarding modal fade animate__animated" id="observacionModal" tabindex="-1" aria-labelledby="observacionModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content text-center">
-                                    <div class="modal-header border-0">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        </button>
-                                    </div>
-                                    <div class="modal-body p-0">
-                                        <div class="onboarding-media">
-                                            <div class="mx-2">
-                                                <img id="fotoEspacio" src="" alt="Espacio" width="335" class="img-fluid">
-                                            </div>
+
+                        <!-- Modal por cada espacio -->
+                        <div th:each="espacio : ${espacios}">
+                            <div class="modal-onboarding modal fade animate__animated" th:id="|modal-observacion-${espacio.idEspacio}|" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content text-center">
+                                        <div class="modal-header border-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="onboarding-content mb-0">
-                                            <h4 class="onboarding-title text-body" id="modalTitle"></h4>
-                                            <div class="onboarding-info">Agrega desde aquí alguna observación que tengas sobre este Espacio Deportivo.</div>
-                                            <form th:action="@{/coordinador/addObservacion}" method="post">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="mb-3">
-                                                            <label for="observacion" class="form-label">Observaciones</label>
-                                                            <textarea class="form-control" id="observacion" name="observacion" rows="5" placeholder="Ingresa tu(s) observación(es)..."></textarea>
-                                                            <input type="hidden" name="idEspacio" id="idEspacio">
+                                        <div class="modal-body p-0">
+                                            <div class="onboarding-content mb-0">
+                                                <h4 class="onboarding-title text-body" th:text="'Espacio Deportivo: ' + ${espacio.nombre}"></h4>
+                                                <div class="onboarding-info">Agrega desde aquí alguna observación que tengas sobre este Espacio Deportivo.</div>
+                                                <form th:action="@{/coordinador/addObservacion}" method="post">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="mb-3">
+                                                                <label for="observacion" class="form-label">Observaciones</label>
+                                                                <textarea id="observacion" class="form-control" name="observacion" rows="5" placeholder="Ingresa tu(s) observación(es)..."></textarea>
+                                                                <input type="hidden" name="idEspacio" th:value="${espacio.idEspacio}" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer border-0">
-                                                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                    <button type="submit" class="btn btn-primary">Agregar</button>
-                                                </div>
-                                            </form>
+                                                    <div class="modal-footer border-0">
+                                                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                        <button type="submit" class="btn btn-primary">Agregar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                     <div class="content-backdrop fade"></div>
                 </div>
@@ -299,14 +313,13 @@
     <script>
         function cambiarEstado(idEspacio, nuevoEstado) {
             $.post('/coordinador/updateEstado', { idEspacio: idEspacio, nuevoEstado: nuevoEstado }, function() {
-                location.reload(); // Recarga la página para reflejar el cambio
+                location.reload();
             });
         }
 
-        function mostrarPopup(idEspacio, nombreEspacio, fotoBase64) {
+        function mostrarPopup(idEspacio, nombre) {
             $('#observacionModal').modal('show');
-            $('#modalTitle').text('Espacio Deportivo ' + nombreEspacio);
-            $('#fotoEspacio').attr('src', 'data:image/jpeg;base64,' + fotoBase64);
+            $('#modalTitle').text('Espacio Deportivo ' + nombre);
             $('#idEspacio').val(idEspacio);
         }
     </script>

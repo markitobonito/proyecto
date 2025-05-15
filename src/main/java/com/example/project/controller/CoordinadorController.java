@@ -2,22 +2,17 @@ package com.example.project.controller;
 
 import com.example.project.entity.*;
 import com.example.project.repository.ActividadRepository;
+import com.example.project.repository.EspacioRepositoryCoord;
 import com.example.project.repository.UsuariosRepository;
-import com.example.project.repository.GeolocalizacionRepository;
-import com.example.project.repository.EstadoGeoRepository;
-import com.example.project.repository.EspacioRepository;
+import com.example.project.repository.EstadoEspacioRepositoryCoord;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/coordinador")
@@ -30,25 +25,27 @@ public class CoordinadorController {
     private ActividadRepository actividadRepository;
 
     @Autowired
-    private EspacioRepository espacioRepository;
+    private EspacioRepositoryCoord espacioRepositoryCoord;
 
     @Autowired
-    private GeolocalizacionRepository geolocalizacionRepository;
-
-    @Autowired
-    private EstadoGeoRepository estadoGeoRepository;
+    private EstadoEspacioRepositoryCoord estadoEspacioRepositoryCoord;
 
     @GetMapping("/perfil")
     public String showCoordinadorProfile(Model model, HttpSession session) {
         Usuarios coordinador = (Usuarios) session.getAttribute("loggedUser");
-        if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
+        if (coordinador == null) {
+            System.out.println("Usuario en sesión es null");
             return "redirect:/login";
         }
-
+        System.out.println("Rol del usuario: " + coordinador.getRol().getRol());
+        if (!"Coordinador".equals(coordinador.getRol().getRol())) {
+            System.out.println("Usuario no es Coordinador");
+            return "redirect:/login";
+        }
         List<Actividad> actividades = actividadRepository.findByUsuarioOrderByFechaDesc(coordinador);
         model.addAttribute("coordinador", coordinador);
         model.addAttribute("actividades", actividades);
-        return "coordinador-perfil-2";
+        return "coordinador/coordinador-perfil-2";
     }
 
     @GetMapping("/espacios")
@@ -57,12 +54,30 @@ public class CoordinadorController {
         if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
             return "redirect:/login";
         }
-
-        List<Espacio> espacios = espacioRepository.findAll();
+        List<Espacio> espacios = espacioRepositoryCoord.findAll();
         model.addAttribute("coordinador", coordinador);
         model.addAttribute("espacios", espacios);
-        return "coordinador-tabla-espacios2";
+        return "coordinador/coordinador-tabla-espacios2";
     }
+
+    @GetMapping("/detalles")
+    public String detallesEspacios(@RequestParam("id") int idEspacio, Model model, HttpSession session) {
+        Usuarios coordinador = (Usuarios) session.getAttribute("loggedUser");
+        if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
+            return "redirect:/login";
+        }
+        model.addAttribute("coordinador", coordinador);
+
+        // Buscar espacio por ID
+        Espacio espacio = espacioRepositoryCoord.findById(idEspacio).orElse(null);
+        if (espacio == null) {
+            return "redirect:/coordinador/espacios"; // o mostrar error
+        }
+
+        model.addAttribute("espacio", espacio);
+        return "coordinador/coordinador-ver-detalles2";
+    }
+
 
     @PostMapping("/updateEstado")
     public String updateEstado(@RequestParam("idEspacio") int idEspacio, @RequestParam("nuevoEstado") String nuevoEstado, Model model, HttpSession session) {
@@ -70,15 +85,25 @@ public class CoordinadorController {
         if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
             return "redirect:/login";
         }
-
-        Espacio espacio = espacioRepository.findById(idEspacio).orElse(null);
+        Espacio espacio = espacioRepositoryCoord.findById(idEspacio).orElse(null);
         if (espacio != null) {
-            EstadoEspacio estadoEspacio = new EstadoEspacio();
-            estadoEspacio.setEstado(nuevoEstado);
+            EstadoEspacio estadoEspacio = estadoEspacioRepositoryCoord.findByEstado(nuevoEstado)
+                    .orElseGet(() -> {
+                        EstadoEspacio nuevo = new EstadoEspacio();
+                        nuevo.setEstado(nuevoEstado);
+                        return estadoEspacioRepositoryCoord.save(nuevo);
+                    });
             espacio.setIdEstadoEspacio(estadoEspacio);
-            espacioRepository.save(espacio);
-        }
+            espacioRepositoryCoord.save(espacio);
 
+            // Registrar actividad
+            Actividad actividad = new Actividad();
+            actividad.setUsuario(coordinador);
+            actividad.setDescripcion("Cambio de estado");
+            actividad.setDetalle("El espacio \"" + espacio.getNombre() + "\" fue marcado como \"" + nuevoEstado + "\".");
+            actividad.setFecha(LocalDateTime.now());
+            actividadRepository.save(actividad);
+        }
         return "redirect:/coordinador/espacios";
     }
 
@@ -89,76 +114,21 @@ public class CoordinadorController {
             return "redirect:/login";
         }
 
-        Espacio espacio = espacioRepository.findById(idEspacio).orElse(null);
+        Espacio espacio = espacioRepositoryCoord.findById(idEspacio).orElse(null);
         if (espacio != null) {
             String observacionesExistentes = espacio.getObservaciones() != null ? espacio.getObservaciones() : "";
             espacio.setObservaciones(observacionesExistentes + "\n" + observacion + " (Agregado el " + java.time.LocalDate.now() + ")");
-            espacioRepository.save(espacio);
+            espacioRepositoryCoord.save(espacio);
+
+            Actividad actividad = new Actividad();
+            actividad.setUsuario(coordinador);
+            actividad.setDescripcion("Agregó una observación");
+            actividad.setDetalle("Se añadió una observación al espacio \"" + espacio.getNombre() + "\".");
+            actividad.setFecha(LocalDateTime.now());
+            actividadRepository.save(actividad);
+
         }
 
         return "redirect:/coordinador/espacios";
     }
-
-    @GetMapping("/asistencia")
-    public String showAsistencia(Model model, HttpSession session) {
-        Usuarios coordinador = (Usuarios) session.getAttribute("loggedUser");
-        if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
-            return "redirect:/login";
-        }
-
-        List<Geolocalizacion> asistencias = geolocalizacionRepository.findByCoordinadorOrderByFechaDesc(coordinador);
-        model.addAttribute("coordinador", coordinador);
-        model.addAttribute("asistencias", asistencias);
-        return "coordinador-asistencia-2";
-    }
-
-    @PostMapping("/marcarAsistencia")
-    public String marcarAsistencia(@RequestParam("latitud") String latitud,
-                                   @RequestParam("longitud") String longitud,
-                                   @RequestParam(value = "observacion", required = false) String observacion,
-                                   HttpSession session) {
-        Usuarios coordinador = (Usuarios) session.getAttribute("loggedUser");
-        if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
-            return "redirect:/login";
-        }
-
-        // Check if there's an open attendance record (no exit time)
-        Optional<Geolocalizacion> openAttendance = geolocalizacionRepository.findTopByCoordinadorAndHoraFinIsNullOrderByFechaDesc(coordinador);
-
-        if (openAttendance.isPresent()) {
-            Geolocalizacion asistencia = openAttendance.get();
-            asistencia.setHoraFin(Time.valueOf(LocalTime.now()));
-            EstadoGeo estadoCompleto = estadoGeoRepository.findByEstado("Asistencia Completa")
-                    .orElseGet(() -> {
-                        EstadoGeo nuevoEstado = new EstadoGeo();
-                        nuevoEstado.setEstado("Asistencia Completa");
-                        return estadoGeoRepository.save(nuevoEstado);
-                    });
-            asistencia.setEstado(estadoCompleto);
-            geolocalizacionRepository.save(asistencia);
-        } else {
-            // Mark entry
-            Geolocalizacion asistencia = new Geolocalizacion();
-            asistencia.setFecha(Date.valueOf(LocalDate.now()));
-            asistencia.setHoraInicio(Time.valueOf(LocalTime.now()));
-            asistencia.setCoordinador(coordinador);
-            asistencia.setLugarExacto(latitud + "," + longitud);
-            asistencia.setObservacion(observacion);
-
-            Espacio espacio = espacioRepository.findAll().stream().findFirst().orElse(null);
-            asistencia.setEspacio(espacio);
-
-            EstadoGeo estadoEntrada = estadoGeoRepository.findByEstado("Entrada Registrada")
-                    .orElseGet(() -> {
-                        EstadoGeo nuevoEstado = new EstadoGeo();
-                        nuevoEstado.setEstado("Entrada Registrada");
-                        return estadoGeoRepository.save(nuevoEstado);
-                    });
-            asistencia.setEstado(estadoEntrada);
-            geolocalizacionRepository.save(asistencia);
-        }
-
-        return "redirect:/coordinador/asistencia";
-    }
-
 }
