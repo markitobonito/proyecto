@@ -3,6 +3,9 @@ package com.example.project.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Entity
@@ -35,4 +38,10 @@ public class Usuarios {
     @ManyToOne
     @JoinColumn(name="estado")
     private EstadoUsu estado;
+
+    @Column(name="telefono")
+    private String telefono;
+
+    @Column(name="fechaCreacion")
+    private LocalDate fechaCreacion;
 }
