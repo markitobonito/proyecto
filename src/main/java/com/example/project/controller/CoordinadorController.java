@@ -1,18 +1,20 @@
 package com.example.project.controller;
 
 import com.example.project.entity.*;
-import com.example.project.repository.ActividadRepository;
-import com.example.project.repository.EspacioRepositoryCoord;
-import com.example.project.repository.UsuariosRepository;
-import com.example.project.repository.EstadoEspacioRepositoryCoord;
+import com.example.project.repository.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/coordinador")
@@ -29,6 +31,10 @@ public class CoordinadorController {
 
     @Autowired
     private EstadoEspacioRepositoryCoord estadoEspacioRepositoryCoord;
+    @Autowired
+    private EstadoGeoRepository estadoGeoRepository;
+    @Autowired
+    private GeolocalizacionRepository geolocalizacionRepository;
 
     @GetMapping("/perfil")
     public String showCoordinadorProfile(Model model, HttpSession session) {
@@ -77,6 +83,24 @@ public class CoordinadorController {
         model.addAttribute("espacio", espacio);
         return "coordinador/coordinador-ver-detalles2";
     }
+
+    @GetMapping("/asistencia")
+    public String mostrarAsistencia(Model model, HttpSession session) {
+        Usuarios coordinador = (Usuarios) session.getAttribute("loggedUser");
+
+        if (coordinador == null || !"Coordinador".equals(coordinador.getRol().getRol())) {
+            return "redirect:/login";
+        }
+
+        // Obtener todas las asistencias del coordinador, ordenadas por fecha descendente
+        List<Geolocalizacion> asistencias = geolocalizacionRepository.findByCoordinadorOrderByFechaDesc(coordinador);
+
+        model.addAttribute("coordinador", coordinador);
+        model.addAttribute("asistencias", asistencias);
+
+        return "coordinador/coordinador-asistencia-2";
+    }
+
 
 
     @PostMapping("/updateEstado")
@@ -131,4 +155,51 @@ public class CoordinadorController {
 
         return "redirect:/coordinador/espacios";
     }
+
+    @PostMapping("/marcarAsistencia")
+    public String marcarAsistencia(@RequestParam("latlon") String latlon, HttpSession session) {
+        Usuarios coordinador = (Usuarios) session.getAttribute("loggedUser");
+        if (coordinador == null) {
+            return "redirect:/login";
+        }
+
+        // Obtener la fecha actual como java.util.Date (sin hora)
+        LocalDate hoyLocal = LocalDate.now();
+        Date hoy = java.sql.Date.valueOf(hoyLocal); // convirtiendo porque la entidad usa java.util.Date
+
+        // Buscar estados "En curso" y "Asistió"
+        EstadoGeo enCurso = estadoGeoRepository.findByEstado("En Curso").orElse(null);
+        EstadoGeo asistio = estadoGeoRepository.findByEstado("Asistió").orElse(null);
+
+        if (enCurso == null || asistio == null) {
+            // Podrías lanzar un error o loguear esto si los estados no están cargados
+            return "redirect:/coordinador/asistencia";
+        }
+
+        // Verificar si ya hay una geolocalización "en curso" hoy
+        Optional<Geolocalizacion> geoOpt = geolocalizacionRepository.findByCoordinadorAndFechaAndEstado(coordinador, hoy, enCurso);
+
+        if (geoOpt.isPresent()) {
+            // Ya marcó asistencia hoy: completar la salida y cambiar estado a "Asistió"
+            Geolocalizacion geo = geoOpt.get();
+            geo.setHoraFin(Time.valueOf(LocalTime.now()));
+            geo.setEstado(asistio);
+            geolocalizacionRepository.save(geo);
+        } else {
+            // No ha marcado aún hoy: crear nueva asistencia
+            Geolocalizacion geo = new Geolocalizacion();
+            geo.setCoordinador(coordinador);
+            geo.setFecha(hoy);
+            geo.setHoraInicio(Time.valueOf(LocalTime.now()));
+            geo.setLugarExacto(latlon);
+            geo.setEstado(enCurso);
+            geo.setObservacion(null); // opcional
+            geo.setEspacio(null);     // puedes asignar si aplica
+            geolocalizacionRepository.save(geo);
+        }
+
+        return "redirect:/coordinador/asistencia";
+    }
+
+
 }

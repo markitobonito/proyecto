@@ -10,7 +10,6 @@
     <title>Asistencia - Coordinador</title>
     <meta name="description" content="Dashboard para coordinadores de la Municipalidad de San Miguel" />
     <meta name="keywords" content="dashboard, coordinador, asistencia, san miguel"/>
-    <link rel="canonical" href="https://themeselection.com/item/sneat-dashboard-pro-bootstrap/">
 
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -99,7 +98,7 @@
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <div class="avatar">
-                                        <img th:src="@{/static/img/avatars/1.png}" alt="Avatar" class="w-px-40 h-auto rounded-circle"/>
+                                        <img th:src="@{/img/avatars/1.png}" alt="Avatar" class="w-px-40 h-auto rounded-circle"/>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -113,7 +112,7 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span class="fw-medium d-block" th:text="${coordinador.nombres} + ' ' + ${coordinador.apellidos}"></span>
-                                                    <small class="text-muted">Coordinador</small>
+                                                    <small class="text-muted" th:text="${coordinador.rol.rol}"></small>
                                                 </div>
                                             </div>
                                         </a>
@@ -133,7 +132,7 @@
                                     </li>
                                     <li><div class="dropdown-divider"></div></li>
                                     <li>
-                                        <a class="dropdown-item" th:href="@{/coordinador/asistencia}">
+                                        <a class="dropdown-item" href="/coordinador/asistencia">
                                             <i class="bx bx-user-check me-2"></i>
                                             <span class="align-middle">Asistencia</span>
                                         </a>
@@ -172,7 +171,7 @@
                                                     <h4 th:text="${coordinador.nombres} + ' ' + ${coordinador.apellidos}"></h4>
                                                     <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                                         <li class="list-inline-item fw-medium">
-                                                            <i class='bx bx-star'></i> Coordinador
+                                                            <i class='bx bx-star'></i><span th:text="${coordinador.rol.rol}"></span>
                                                         </li>
                                                         <li class="list-inline-item fw-medium">
                                                             <i class='bx bx-map'></i> Lima
@@ -191,9 +190,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-sm-row mb-4">
-                                    <li class="nav-item"><a class="nav-link active" href="/coordinador/perfil"><i class='bx bx-user me-1'></i> Perfil</a></li>
-                                    <li class="nav-item"><a class="nav-link active" href="coordinador/espacios"><i class='bx bx-map-pin me-1'></i> Espacios Deportivos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="/coordinador/asistencia"><i class='bx bx-user-check me-1'></i> Asistencia</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/coordinador/perfil"><i class='bx bx-user me-1'></i> Perfil</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/coordinador/espacios"><i class='bx bx-map-pin me-1'></i> Espacios Deportivos</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="/coordinador/asistencia"><i class='bx bx-user-check me-1'></i> Asistencia</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -203,12 +202,15 @@
                                     <h5 class="card-header">Marcar Asistencia</h5>
                                     <div class="card-body text-center">
                                         <form id="attendanceForm" action="/coordinador/marcarAsistencia" method="post">
-                                            <input type="hidden" name="latitud" id="latitud">
-                                            <input type="hidden" name="longitud" id="longitud">
+                                            <input type="hidden" name="latlon" id="latlon">
+
+                                            <!-- Campo visible de observación -->
                                             <div class="mb-3">
                                                 <label for="observacion" class="form-label">Observación (opcional):</label>
                                                 <textarea name="observacion" id="observacion" class="form-control" rows="3"></textarea>
                                             </div>
+
+                                            <!-- Botón que activa la lógica JS -->
                                             <button type="button" id="markAttendance" class="btn btn-primary">Marcar Asistencia</button>
                                             <div id="locationStatus" class="text-muted mb-3"></div>
                                         </form>
@@ -216,6 +218,18 @@
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-7 col-md-7">
+
+                                <div th:if="${not #lists.isEmpty(asistencias)}" class="mb-3">
+                                    <div class="alert alert-info" role="alert">
+                                        <strong>Última asistencia: </strong>
+                                        <span th:text="'El ' + ${#dates.format(asistencias[0].fecha, 'dd/MM/yyyy')} +
+                                                            ' a las ' + ${#dates.format(asistencias[0].horaInicio, 'HH:mm')} +
+                                                            ' (' + ${asistencias[0].estado.estado} + ')'">
+                                        </span>
+
+                                    </div>
+                                </div>
+
                                 <div class="card mb-4">
                                     <h5 class="card-header">Historial de Asistencia</h5>
                                     <div class="table-responsive">
@@ -230,16 +244,34 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="table-border-bottom-0">
-                                            <tr th:each="asistencia : ${asistencias}">
-                                                <td th:text="${asistencia.fecha}"></td>
-                                                <td th:text="${asistencia.horaInicio}"></td>
-                                                <td th:text="${asistencia.horaFin} ?: '-'"></td>
-                                                <td th:text="${asistencia.lugarExacto}"></td>
-                                                <td th:text="${asistencia.estado.estado}"></td>
-                                            </tr>
-                                            <tr th:if="${asistencias.isEmpty}">
-                                                <td colspan="5" class="text-center">No hay registros de asistencia.</td>
-                                            </tr>
+                                                <!-- Recorre la lista de asistencias del coordinador -->
+                                                <tr th:each="asistencia : ${asistencias}">
+                                                    <!-- Fecha con formato -->
+                                                    <td th:text="${#dates.format(asistencia.fecha, 'dd/MM/yyyy')}"></td>
+
+                                                    <!-- Hora de entrada con formato -->
+                                                    <td th:text="${#dates.format(asistencia.horaInicio, 'HH:mm')}"></td>
+
+                                                    <!-- Hora de salida o '-' si no ha sido registrada -->
+                                                    <td th:text="${asistencia.horaFin != null} ? ${#dates.format(asistencia.horaFin, 'HH:mm')} : '-'"></td>
+
+                                                    <!-- Coordenadas o dirección registrada -->
+                                                    <td th:text="${asistencia.lugarExacto}"></td>
+
+                                                    <!-- Estado con badge de color -->
+                                                    <td>
+                                                        <span class="badge"
+                                                              th:text="${asistencia.estado.estado}"
+                                                              th:classappend="${asistencia.estado.estado == 'Asistió'} ? ' bg-label-success' :
+                                                                              (${asistencia.estado.estado == 'En Curso'} ? ' bg-label-warning' : ' bg-label-secondary')">
+                                                        </span>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Si no hay registros -->
+                                                <tr th:if="${#lists.isEmpty(asistencias)}">
+                                                    <td colspan="5" class="text-center">No hay registros de asistencia.</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -266,5 +298,33 @@
     <script th:src="@{/js/main.js}"></script>
     <script th:src="@{/js/app-user-view-account.js}"></script>
     <script th:src="@{js/asistencia.js}"></script>
+
+    <script>
+        document.getElementById('markAttendance').addEventListener('click', function () {
+            const status = document.getElementById('locationStatus');
+            status.textContent = "Obteniendo ubicación...";
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const latlon = lat + "," + lon;
+
+                    document.getElementById('latlon').value = latlon;
+
+                    // Opcional: mostrar confirmación
+                    status.textContent = "Ubicación detectada: " + latlon;
+
+                    // Enviar el formulario
+                    document.getElementById('attendanceForm').submit();
+                }, function (error) {
+                    status.textContent = "No se pudo obtener la ubicación: " + error.message;
+                });
+            } else {
+                status.textContent = "Tu navegador no soporta geolocalización.";
+            }
+        });
+    </script>
+
 </body>
 </html>
