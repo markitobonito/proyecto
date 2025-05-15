@@ -13,7 +13,7 @@ public class Espacio {
     @Column(name="idEspacio", nullable = false)
     private int idEspacio;
     @Column(name="nombre")
-    private String nombreEspacio;
+    private String nombre;
 
     @ManyToOne
     @JoinColumn(name="idLugar")

@@ -91,7 +91,7 @@ public class AdminController {
 
         // Crear y guardar el nuevo Lugar
         Lugar nuevoLugar = new Lugar();
-        nuevoLugar.setNombreLugar(nombreLugar);
+        nuevoLugar.setLugar(nombreLugar);
         lugarRepository.save(nuevoLugar);
 
         // Asociar el lugar al espacio
