@@ -121,9 +121,15 @@ public class SuperAdminController {
         return "/superadmin/casa";
     }
 
-    @PostMapping(value = "/en")
-    public String habilita(@RequestParam("id") int id,@RequestParam("st") int st){
-        superAdminRepository.actualizarEstadoUsuario(id, st);
-        return "redirect:/superadmin";
+    @GetMapping(value = "/en")
+    public String habilita(@RequestParam("id") int id){
+        superAdminRepository.actualizarEstadoUsuario(id, 1);
+        return "redirect:/superadmin/home";
+    }
+
+    @GetMapping(value = "/de")
+    public String deshabilita(@RequestParam("id") int id){
+        superAdminRepository.actualizarEstadoUsuario(id, 2);
+        return "redirect:/superadmin/home";
     }
 }
