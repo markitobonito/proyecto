@@ -13,7 +13,7 @@ public class Espacio {
     @Column(name="idEspacio", nullable = false)
     private int idEspacio;
     @Column(name="nombre")
-    private String nombre;
+    private String nombreEspacio;
 
     @ManyToOne
     @JoinColumn(name="idLugar")
@@ -31,4 +31,10 @@ public class Espacio {
     private byte[] foto2;
     @Column(name="foto3")
     private byte[] foto3;
+
+    @Column(name="observaciones", length = 1000)
+    private String observaciones;
+
+    @Column(name="tipo")
+    private String tipo;
 }

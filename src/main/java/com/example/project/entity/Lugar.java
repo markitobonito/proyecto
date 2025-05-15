@@ -13,5 +13,5 @@ public class Lugar {
     private int idLugar;
 
     @Column(name="lugar", nullable = false)
-    private String lugar;
+    private String nombreLugar;
 }

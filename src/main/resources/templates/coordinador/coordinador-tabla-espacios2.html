@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="es" class="light-style layout-compact" dir="ltr" data-theme="theme-semi-dark" data-assets-path="/static/" data-template="vertical-menu-template-semi-dark" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" class="light-style layout-compact"
+      dir="ltr" data-theme="theme-semi-dark"
+      data-assets-path="/"
+      data-template="vertical-menu-template-semi-dark"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <title>Espacios Deportivos</title>
-    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 Admin Dashboard built for developers!" />
-    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
-    <link rel="canonical" href="https://themeselection.com/item/sneat-dashboard-pro-bootstrap/">
-
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/static/img/icono.ico">
+    <link rel="icon" type="image/x-xicon" th:href="@{/img/icono.ico}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -17,28 +17,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="stylesheet" href="/static/vendor/fonts/boxicons.css" />
-    <link rel="stylesheet" href="/static/vendor/fonts/fontawesome.css" />
-    <link rel="stylesheet" href="/static/vendor/fonts/flag-icons.css" />
+    <link rel="stylesheet" th:href="@{/vendor/fonts/boxicons.css}" />
+    <link rel="stylesheet" th:href="@{/vendor/fonts/fontawesome.css}" />
+    <link rel="stylesheet" th:href="@{/vendor/fonts/flag-icons.css}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="/static/vendor/css/rtl/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="/static/vendor/css/rtl/theme-semi-dark.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="/static/css/demo.css" />
+    <link rel="stylesheet" th:href="@{/vendor/css/rtl/core.css}" class="template-customizer-core-css" />
+    <link rel="stylesheet" th:href="@{/vendor/css/rtl/theme-semi-dark.css}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" th:href="@{/css/demo.css}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="/static/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="/static/vendor/libs/typeahead-js/typeahead.css" />
-    <link rel="stylesheet" href="/static/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
-    <link rel="stylesheet" href="/static/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
-    <link rel="stylesheet" href="/static/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css">
+    <link rel="stylesheet" th:href="@{/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
+    <link rel="stylesheet" th:href="@{/vendor/libs/typeahead-js/typeahead.css}" />
+    <link rel="stylesheet" th:href="@{/vendor/libs/datatables-bs5/datatables.bootstrap5.css}">
+    <link rel="stylesheet" th:href="@{/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css}">
+    <link rel="stylesheet" th:href="@{/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css}">
 
     <!-- Page CSS -->
-    <link rel="stylesheet" href="/static/vendor/css/pages/page-profile.css" />
+    <link rel="stylesheet" th:href="@{/vendor/css/pages/page-profile.css}" />
 
     <!-- Helpers -->
-    <script src="/static/vendor/js/helpers.js"></script>
-    <script src="/static/js/config.js"></script>
+    <script th:src="@{/vendor/js/helpers.js}"></script>
+    <script th:src="@{/js/config.js}"></script>
 </head>
 <body style="background-color: rgb(255, 242, 214);">
     <div class="layout-wrapper layout-content-navbar">
@@ -75,7 +75,7 @@
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar">
-                                                            <img src="/static/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
+                                                            <img th:src="@{/img/avatars/1.png}" alt class="w-px-40 h-auto rounded-circle">
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
@@ -99,32 +99,58 @@
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <div class="avatar">
-                                        <img src="/static/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
+                                        <img th:src="@{/img/avatars/1.png}" alt class="w-px-40 h-auto rounded-circle">
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <a class="dropdown-item" href="coordinador-perfil.html">
+                                        <a class="dropdown-item" href="/coordinador/perfil">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="/static/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
+                                                        <img th:src="@{/img/avatars/1.png}" alt class="w-px-40 h-auto rounded-circle">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-medium d-block">Pedro</span>
+                                                    <span class="fw-medium d-block" th:text="${coordinador.nombres} + ' ' + ${coordinador.apellidos}"></span>
                                                     <small class="text-muted">Coordinador</small>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li><div class="dropdown-divider"></div></li>
-                                    <li><a class="dropdown-item" href="coordinador-perfil.html"><i class="bx bx-user me-2"></i><span class="align-middle">Mi Perfil</span></a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bx bx-cog me-2"></i><span class="align-middle">Configuración</span></a></li>
-                                    <li><div class="dropdown-divider"></div></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bx bx-dollar me-2"></i><span class="align-middle">Asistencia</span></a></li>
-                                    <li><div class="dropdown-divider"></div></li>
-                                    <li><a class="dropdown-item" href="../registro/login.html" target="_blank"><i class="bx bx-power-off me-2"></i><span class="align-middle">Cerrar Sesión</span></a></li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/coordinador/perfil">
+                                            <i class="bx bx-user me-2"></i>
+                                            <span class="align-middle">Mi Perfil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bx bx-cog me-2"></i>
+                                            <span class="align-middle">Configuración</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bx bx-dollar me-2"></i>
+                                            <span class="align-middle">Asistencia</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/logout">
+                                            <i class="bx bx-power-off me-2"></i>
+                                            <span class="align-middle">Cerrar Sesión</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -136,20 +162,22 @@
                             <div class="col-12">
                                 <div class="card mb-4">
                                     <div class="user-profile-header-banner">
-                                        <img src="/static/img/pages/profile-banner.png" alt="Banner image" class="rounded-top">
+                                        <img th:src="@{/img/pages/profile-banner.png}" alt="Banner image" class="rounded-top">
                                     </div>
                                     <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                                         <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                                            <img src="/static/img/avatars/1.png" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                                            <img th:src="@{/img/avatars/1.png}" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
                                         </div>
                                         <div class="flex-grow-1 mt-3 mt-sm-5">
                                             <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                                                 <div class="user-profile-info">
-                                                    <h4>Pedro Perez</h4>
+                                                    <h4 th:text="${coordinador.nombres} + ' ' + ${coordinador.apellidos}"></h4>
                                                     <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                                         <li class="list-inline-item fw-medium"><i class='bx bx-star'></i> Coordinador</li>
                                                         <li class="list-inline-item fw-medium"><i class='bx bx-map'></i> Lima</li>
-                                                        <li class="list-inline-item fw-medium"><i class='bx bx-calendar-alt'></i> Se unió en Abril de 2025</li>
+                                                        <li class="list-inline-item fw-medium">
+                                                            <i class='bx bx-calendar-alt'></i> <span th:text="${coordinador.fechaCreacion}"></span>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -161,9 +189,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-sm-row mb-4">
-                                    <li class="nav-item"><a class="nav-link" href="coordinador-perfil.html"><i class='bx bx-user me-1'></i> Perfil</a></li>
-                                    <li class="nav-item"><a class="nav-link active" href="coordinador-tabla-espacios.html"><i class='bx bx-map-pin me-1'></i> Espacios Deportivos</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="coordinador-asistencia.html"><i class='bx bx-user-check me-1'></i> Asistencia</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="/coordinador/perfil"><i class='bx bx-user me-1'></i> Perfil</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="coordinador/espacios"><i class='bx bx-map-pin me-1'></i> Espacios Deportivos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-user-check me-1'></i> Asistencia</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -175,7 +203,6 @@
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th></th>
                                                     <th>Nombre</th>
                                                     <th>Estado</th>
                                                     <th>Ubicación</th>
@@ -185,20 +212,24 @@
                                             <tbody class="table-border-bottom-0">
                                                 <tr th:each="espacio : ${espacios}">
                                                     <td></td>
-                                                    <td><span class="fw-medium" th:text="${espacio.nombre}"></span></td>
+                                                    <td><span class="fw-medium" th:text="${espacio.nombreEspacio}"></span></td>
                                                     <td>
-                                                        <span class="badge me-1" th:classappend="${espacio.estado == 'Disponible'} ? 'bg-label-success' : ${espacio.estado == 'Ocupado'} ? 'bg-label-danger' : 'bg-label-warning'" th:text="${espacio.estado}"></span>
+                                                        <span class="badge me-1" th:classappend="${espacio.idEstadoEspacio.estado == 'Disponible'} ? 'bg-label-success' : ${espacio.idEstadoEspacio.estado == 'Ocupado'} ? 'bg-label-danger' : 'bg-label-warning'" th:text="${espacio.idEstadoEspacio.estado == 'Mantenimiento'}"></span>
                                                     </td>
-                                                    <td th:text="${espacio.ubicacion}"></td>
+                                                    <td th:text="${espacio.idLugar.nombreLugar}"></td>
                                                     <td>
-                                                        <a th:href="@{/coordinador/espacios/detalles/{id}(id=${espacio.idEspacio})}" class="btn btn-label-primary btn-icon" title="Ver detalles"><i class="bx bx-show"></i></a>
+                                                        <button type="button" class="btn btn-label-primary btn-icon" title="Ver detalles"><i class="bx bx-show"></i></button>
                                                         <button type="button" class="btn btn-label-warning btn-icon" data-bs-toggle="dropdown" aria-expanded="false" title="Modificar estado"><i class="bx bx-pencil"></i></button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" th:href="@{/coordinador/espacios/cambiarEstado(idEspacio=${espacio.idEspacio},estado='Disponible')}">Disponible</a></li>
-                                                            <li><a class="dropdown-item" th:href="@{/coordinador/espacios/cambiarEstado(idEspacio=${espacio.idEspacio},estado='Ocupado')}">Ocupado</a></li>
-                                                            <li><a class="dropdown-item" th:href="@{/coordinador/espacios/cambiarEstado(idEspacio=${espacio.idEspacio},estado='Mantenimiento')}">Mantenimiento</a></li>
+                                                            <li><a class="dropdown-item" th:onclick="'cambiarEstado(' + ${espacio.idEspacio} + ', \'Disponible\')'" href="#">Disponible</a></li>
+                                                            <li><a class="dropdown-item" th:onclick="'cambiarEstado(' + ${espacio.idEspacio} + ', \'Ocupado\')'" href="#">Ocupado</a></li>
+                                                            <li><a class="dropdown-item" th:onclick="'cambiarEstado(' + ${espacio.idEspacio} + ', \'Mantenimiento\')'" href="#">Mantenimiento</a></li>
                                                         </ul>
-                                                        <button type="button" class="btn btn-label-info btn-icon" th:attr="data-bs-target='#modal' + ${espacio.idEspacio}" data-bs-toggle="modal" title="Agregar observación"><i class="bx bx-comment"></i></button>
+                                                        <button type="button" class="btn btn-label-info btn-icon"
+                                                                th:onclick="'mostrarPopup(' + ${espacio.idEspacio} + ', \'' + ${espacio.nombreEspacio} + '\', \'' + ${#strings.toString(espacio.foto1)} + '\')'"
+                                                                title="Agregar observación">
+                                                            <i class="bx bx-comment"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -207,29 +238,30 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Modals dinámicos para cada espacio -->
-                        <div th:each="espacio : ${espacios}" class="modal-onboarding modal fade animate__animated" th:id="'modal' + ${espacio.idEspacio}" tabindex="-1" aria-hidden="true">
+                        <!-- Modal único para añadir observación -->
+                        <div class="modal-onboarding modal fade animate__animated" id="observacionModal" tabindex="-1" aria-labelledby="observacionModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content text-center">
                                     <div class="modal-header border-0">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
                                     </div>
                                     <div class="modal-body p-0">
                                         <div class="onboarding-media">
                                             <div class="mx-2">
-                                                <img th:src="${espacio.tipo == 'Piscina' ? 'https://i.ibb.co/842tLPz4/piscina1.jpg' : espacio.tipo == 'Baloncesto' ? 'https://i.ibb.co/xKh4qBGj/basquet.jpg' : 'https://i.ibb.co/ycqHL5cR/sintetica.jpg'}" alt="Espacio" width="335" class="img-fluid">
+                                                <img id="fotoEspacio" src="" alt="Espacio" width="335" class="img-fluid">
                                             </div>
                                         </div>
                                         <div class="onboarding-content mb-0">
-                                            <h4 class="onboarding-title text-body" th:text="'Espacio Deportivo ' + ${espacio.nombre}"></h4>
+                                            <h4 class="onboarding-title text-body" id="modalTitle"></h4>
                                             <div class="onboarding-info">Agrega desde aquí alguna observación que tengas sobre este Espacio Deportivo.</div>
-                                            <form th:action="@{/coordinador/espacios/agregarObservacion}" method="post">
+                                            <form th:action="@{/coordinador/addObservacion}" method="post">
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="mb-3">
                                                             <label for="observacion" class="form-label">Observaciones</label>
                                                             <textarea class="form-control" id="observacion" name="observacion" rows="5" placeholder="Ingresa tu(s) observación(es)..."></textarea>
-                                                            <input type="hidden" name="idEspacio" th:value="${espacio.idEspacio}">
+                                                            <input type="hidden" name="idEspacio" id="idEspacio">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -251,16 +283,32 @@
             <div class="drag-target"></div>
         </div>
     </div>
-    <script src="/static/vendor/libs/jquery/jquery.js"></script>
-    <script src="/static/vendor/libs/popper/popper.js"></script>
-    <script src="/static/vendor/js/bootstrap.js"></script>
-    <script src="/static/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="/static/vendor/libs/hammer/hammer.js"></script>
-    <script src="/static/vendor/libs/i18n/i18n.js"></script>
-    <script src="/static/vendor/libs/typeahead-js/typeahead.js"></script>
-    <script src="/static/vendor/js/menu.js"></script>
-    <script src="/static/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="/static/js/main.js"></script>
-    <script src="/static/js/app-user-view-account.js"></script>
+    <script th:src="@{/vendor/libs/jquery/jquery.js}"></script>
+    <script th:src="@{/vendor/libs/popper/popper.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.js}"></script>
+    <script th:src="@{/vendor/libs/perfect-scrollbar/perfect-scrollbar.js}"></script>
+    <script th:src="@{/vendor/libs/hammer/hammer.js}"></script>
+    <script th:src="@{/vendor/libs/i18n/i18n.js}"></script>
+    <script th:src="@{/vendor/libs/typeahead-js/typeahead.js}"></script>
+    <script th:src="@{/vendor/js/menu.js}"></script>
+    <script th:src="@{/vendor/libs/datatables-bs5/datatables-bootstrap5.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/app-user-view-account.js}"></script>
+    <script th:src="@{/js/asistencia.js}"></script>
+
+    <script>
+        function cambiarEstado(idEspacio, nuevoEstado) {
+            $.post('/coordinador/updateEstado', { idEspacio: idEspacio, nuevoEstado: nuevoEstado }, function() {
+                location.reload(); // Recarga la página para reflejar el cambio
+            });
+        }
+
+        function mostrarPopup(idEspacio, nombreEspacio, fotoBase64) {
+            $('#observacionModal').modal('show');
+            $('#modalTitle').text('Espacio Deportivo ' + nombreEspacio);
+            $('#fotoEspacio').attr('src', 'data:image/jpeg;base64,' + fotoBase64);
+            $('#idEspacio').val(idEspacio);
+        }
+    </script>
 </body>
 </html>
