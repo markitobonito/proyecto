@@ -81,164 +81,81 @@
 
 <!-- Navbar -->
 
-<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-  
-      <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
-        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-          <i class="bx bx-menu bx-sm"></i>
-        </a>
-      </div>
-      
-      <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        
-        <!-- Dashboard -->
-        <div class="navbar-nav align-items-center">
-          <div class="nav-item navbar-search-wrapper mb-0">
-            <a class="nav-item nav-link px-0" href="javascript:void(0);">
-              <span class="d-none d-md-inline-block text-body">Dashboard</span>
-            </a>
-          </div>
-        </div>
-        <!-- /Dashboard -->
-        
-        <ul class="navbar-nav flex-row align-items-center ms-auto">
 
-          <span class="text-uppercase text-heading" style="margin-left: 10px; margin-right: 2px; font-weight: bold;">Superadmin</span>
-
-          <!-- Quick links  -->
-          <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-              <i class='bx bx-grid-alt bx-sm'></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end py-0">
-              <div class="dropdown-menu-header border-bottom">
-                <div class="dropdown-header d-flex align-items-center py-3">
-                  <h5 class="text-body mb-0 me-auto">Shortcuts</h5>
-                  <a href="javascript:void(0)" class="dropdown-shortcuts-add text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="bx bx-sm bx-plus-circle"></i></a>
-                </div>
-              </div>
-              <div class="dropdown-shortcuts-list scrollable-container">
-                <div class="row row-bordered overflow-visible g-0">
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-calendar fs-4"></i>
-                    </span>
-                    <a href="app-calendar.html" class="stretched-link">Calendar</a>
-                    <small class="text-muted mb-0">Appointments</small>
-                  </div>
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-food-menu fs-4"></i>
-                    </span>
-                    <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
-                    <small class="text-muted mb-0">Manage Accounts</small>
-                  </div>
-                </div>
-                <div class="row row-bordered overflow-visible g-0">
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-user fs-4"></i>
-                    </span>
-                    <a href="app-user-list.html" class="stretched-link">User App</a>
-                    <small class="text-muted mb-0">Manage Users</small>
-                  </div>
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-check-shield fs-4"></i>
-                    </span>
-                    <a href="app-access-roles.html" class="stretched-link">Role Management</a>
-                    <small class="text-muted mb-0">Permission</small>
-                  </div>
-                </div>
-                <div class="row row-bordered overflow-visible g-0">
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-pie-chart-alt-2 fs-4"></i>
-                    </span>
-                    <a href="index.html" class="stretched-link">Dashboard</a>
-                    <small class="text-muted mb-0">User Profile</small>
-                  </div>
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-cog fs-4"></i>
-                    </span>
-                    <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
-                    <small class="text-muted mb-0">Account Settings</small>
-                  </div>
-                </div>
-                <div class="row row-bordered overflow-visible g-0">
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-help-circle fs-4"></i>
-                    </span>
-                    <a href="pages-faq.html" class="stretched-link">FAQs</a>
-                    <small class="text-muted mb-0">FAQs & Articles</small>
-                  </div>
-                  <div class="dropdown-shortcuts-item col">
-                    <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
-                      <i class="bx bx-window-open fs-4"></i>
-                    </span>
-                    <a href="modal-examples.html" class="stretched-link">Modals</a>
-                    <small class="text-muted mb-0">Useful Popups</small>
-                  </div>
-                </div>
-              </div>
+      <nav class="layout-navbar shadow-none py-0" th:fragment="navbarFragment">
+        <div class="container">
+          <div class="navbar navbar-expand-lg landing-navbar px-3 px-md-8">
+            <div class="navbar-brand app-brand demo d-flex py-0 me-4 me-xl-8">
+              <button class="navbar-toggler border-0 px-0 me-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="icon-base bx bx-menu icon-lg align-middle text-heading fw-medium"></i>
+              </button>
+              <a th:href="@{/superadmin/home}" class="app-brand-link">
+                    <span class="app-brand-logo demo">
+                        </span>
+                <img src="https://i.ibb.co/J8Q4NtV/San-Miguel.jpg" style="width: 100px" alt="Logo San Miguel">
+                <span class="app-brand-text demo menu-text fw-bold ms-2 ps-1">San Miguel</span>
+              </a>
             </div>
-          </li>
-          <!-- Quick links -->
 
-          <!-- User -->
-          <li class="nav-item navbar-dropdown dropdown-user dropdown">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-              <div class="avatar">
-                <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
+            <div class="collapse navbar-collapse landing-nav-menu" id="navbarSupportedContent">
+              <button class="navbar-toggler border-0 text-heading position-absolute end-0 top-0 scaleX-n1-rtl p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="icon-base bx bx-x icon-lg"></i>
+              </button>
+              <ul class="navbar-nav">
+              </ul>
+            </div>
+            <div class="landing-menu-overlay d-lg-none"></div>
+
+            <div class="d-flex align-items-center ms-auto">
+
+              <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                  <i class="bx bx-menu bx-sm"></i>
+                </a>
               </div>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="#">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
+
+              <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse-right"> <span class="text-uppercase text-heading" style="margin-left: 10px; margin-right: 2px; font-weight: bold;">Super Admin</span>
+                <ul class="navbar-nav flex-row align-items-center"> <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar">
+                      <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item"> <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="avatar">
+                            <img src="https://i.ibb.co/Gy3XsW4/307ce493-b254-4b2d-8ba4-d12c080d6651.jpg" alt class="w-px-40 h-auto rounded-circle">
+                          </div>
                         </div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <span class="fw-medium d-block" style="color: black;">Superadmin</span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <div class="dropdown-divider"></div>
-              </li>
+                        <div class="flex-grow-1">
+                          <span class="fw-medium d-block" style="color: black;">SuperAdmin</span>
+                        </div>
+                      </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
 
-              <li>
-                <a class="dropdown-item" href="principal.html" >
-                  <i class="bx bx-power-off me-2" style="color: rgb(231, 0, 0);"></i>
-                  <span class="align-middle" style="color: rgb(231, 0, 0);">Salir</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!--/ User -->
-          
-          
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
 
-        </ul>
-      </div>
+                    <li>
+                      <a class="dropdown-item" th:href="@{/logout}"> <i class="bx bx-power-off me-2" style="color: rgb(231, 0, 0);"></i>
+                        <span class="align-middle" style="color: rgb(231, 0, 0);">Cerrar Sesión</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                </ul> </div> <div class="navbar-search-wrapper search-input-wrapper d-none">
+              <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search...">
+              <i class="bx bx-x bx-sm search-toggler cursor-pointer"></i>
+            </div>
 
-      
-      <!-- Search Small Screens -->
-      <div class="navbar-search-wrapper search-input-wrapper  d-none">
-        <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search...">
-        <i class="bx bx-x bx-sm search-toggler cursor-pointer"></i>
-      </div>
-      
-      
-  </nav>
-  
-
+            </div> </div> </div> </nav>
   
 <!-- / Navbar -->
 
