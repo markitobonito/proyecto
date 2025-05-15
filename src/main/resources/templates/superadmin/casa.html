@@ -349,7 +349,7 @@
               <span class="badge bg-label-warning p-2"><i class="bx bx-wallet text-warning"></i></span>
             </div>
             <div>
-              <h6 class="mb-0" th:text="'s/'+${ingresoTotal}"></h6>
+              <h6 class="mb-0" th:text="'s/'+${ingresoTotalEnLinea}">s/0</h6>
               <small>En línea</small>
             </div>
           </div>
@@ -358,7 +358,7 @@
               <span class="badge bg-label-secondary p-2"><i class="bx bx-dollar text-secondary"></i></span>
             </div>
             <div>
-              <h6 class="mb-0">s/0</h6>
+              <h6 class="mb-0" th:text="'s/'+${ingresoTotalEnBanco}">s/0</h6>
               <small>Depósitos</small>
             </div>
           </div>
@@ -422,7 +422,7 @@
               
             </div>
             <span class="d-block">Ingreso de este mes</span>
-            <h4 class="card-title mb-1" th:text="'s/'+${ingresoMes}"></h4>
+            <h4 class="card-title mb-1" th:text="'s/'+${cantidadesMes.get(0)}"></h4>
             <!--small class="text-success fw-medium"><i class='bx bx-up-arrow-alt'></i> +28.42%</small-->
             <small class="text-success fw-medium">.</small>
           </div>
@@ -450,149 +450,6 @@
     </div>
   </div>
 </div>
-
-<!--div class="row"-->
-  <!-- Customer Ratings -->
-  <!--div class="col-md-6 col-lg-4 mb-4">
-    <div class="card h-100">
-      <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-title m-0 me-2">Calificaciones</h5>
-        <div class="dropdown">
-          <button class="btn p-0" type="button" id="customerRatings" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bx bx-dots-vertical-rounded"></i>
-          </button>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="customerRatings">
-            <a class="dropdown-item" href="javascript:void(0);">Clasificaciones destacadas</a>
-            <a class="dropdown-item" href="javascript:void(0);">Según tipo de Espacio</a>
-            <a class="dropdown-item" href="javascript:void(0);">Ver Todo </a>
-          </div>
-        </div>
-      </div>
-      <div class="card-body pb-0">
-        <div class="d-flex align-items-center gap-3 mb-3">
-          <h1 class="display-3 mb-0">4.0</h1>
-          <div class="ratings">
-            <i class="bx bxs-star bx-sm text-warning"></i>
-            <i class="bx bxs-star bx-sm text-warning"></i>
-            <i class="bx bxs-star bx-sm text-warning"></i>
-            <i class="bx bxs-star bx-sm text-warning"></i>
-            <i class="bx bxs-star bx-sm text-lighter"></i>
-          </div>
-        </div>
-        <div class="d-flex align-items-center">
-          <span class="badge bg-label-primary me-3">+1.2</span>
-          <span>Puntos desde el último mes</span>
-        </div>
-      </div>
-      <div id="customerRatingsChart"></div>
-    </div>
-  </div-->
-  <!--/ Customer Ratings -->
-
-  <!-- Earning Reports -->
-  <!--div class="col-md-6 col-lg-4 col-xl-4 mb-4">
-    <div class="card h-100">
-      <div class="card-header d-flex justify-content-between">
-        <div class="card-title mb-0">
-          <h5 class="m-0 me-2">Reporte de Ganancias</h5>
-          <small class="text-muted">Ganancias Semanales</small>
-        </div>
-        <div class="dropdown">
-          <button class="btn p-0" type="button" id="earningReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bx bx-dots-vertical-rounded"></i>
-          </button>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="earningReports">
-            <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-            <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-            <a class="dropdown-item" href="javascript:void(0);">Share</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-body pb-0">
-        <ul class="p-0 m-0">
-          <li class="d-flex mb-4 pb-1">
-            <div class="avatar flex-shrink-0 me-3">
-              <span class="avatar-initial rounded bg-label-primary"><i class='bx bx-trending-up'></i></span>
-            </div>
-            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-              <div class="me-2">
-                <h6 class="mb-0">Reservas</h6>
-                <small class="text-muted">12 reservas</small>
-              </div>
-              <div class="user-progress">
-                <small class="fw-medium">s/619</small><i class='bx bx-chevron-up text-success ms-1'></i> <small class="text-muted">8.6%</small>
-              </div>
-            </div>
-          </li>
-          <li class="d-flex mb-4 pb-1">
-            <div class="avatar flex-shrink-0 me-3">
-              <span class="avatar-initial rounded bg-label-success"><i class='bx bx-dollar'></i></span>
-            </div>
-            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-              <div class="me-2">
-                <h6 class="mb-0">Ingresos Totales</h6>
-                <small class="text-muted">Reservas, Extras</small>
-              </div>
-              <div class="user-progress">
-                <small class="fw-medium">s/3,571</small><i class='bx bx-chevron-up text-success ms-1'></i> <small class="text-muted">39.6%</small>
-              </div>
-            </div>
-          </li>
-          <li class="d-flex mb-4 pb-1">
-            <div class="avatar flex-shrink-0 me-3">
-              <span class="avatar-initial rounded bg-label-secondary"><i class='bx bx-credit-card'></i></span>
-            </div>
-            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-              <div class="me-2">
-                <h6 class="mb-0">Gastos Totales</h6>
-                <small class="text-muted">Mantemimiento</small>
-              </div>
-              <div class="user-progress">
-                <small class="fw-medium">s/130</small><i class='bx bx-chevron-up text-success ms-1'></i> <small class="text-muted">22.8%</small>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div id="reportBarChart"></div>
-      </div>
-    </div>
-  </div-->
-  <!--/ Earning Reports -->
-
-
-  <!-- Sales Stats -->
-  <!--div class="col-md-6 col-lg-4 mb-4">
-    <div class="card h-100">
-      <div class="card-header d-flex align-items-center justify-content-between mb-30">
-        <h5 class="card-title m-0 me-2">Estadísticas de Ventas</h5>
-        <div class="dropdown">
-          <button class="btn p-0" type="button" id="salesStatsID" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bx bx-dots-vertical-rounded"></i>
-          </button>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="salesStatsID">
-            <a class="dropdown-item" href="javascript:void(0);">Últimos 28 días</a>
-            <a class="dropdown-item" href="javascript:void(0);">Último mes</a>
-            <a class="dropdown-item" href="javascript:void(0);">Último año</a>
-          </div>
-        </div>
-      </div>
-      <div id="salesStats"></div>
-      <div class="card-body">
-        <div class="d-flex justify-content-around">
-          <div class="d-flex align-items-center lh-1 mb-3 mb-sm-0">
-            <span class="badge badge-dot bg-success me-2"></span> Índice de conversión
-          </div>
-          <div class="d-flex align-items-center lh-1 mb-3 mb-sm-0">
-            <span class="badge badge-dot bg-label-secondary me-2"></span> Requisitos totales
-          </div>
-        </div>
-      </div>
-    </div>
-  </div-->
-  <!--/ Sales Stats -->
-
-
-
   <!-- Customer Table -->
   <div class="col-md-6 col-lg-12 mb-0">
     <div class="card mb-4">
@@ -648,7 +505,7 @@
   <div class="col-md-6 col-lg-12 mb-0">
     <div class="card mb-4">
       <div class="table-responsive mb-3">
-        <table class="table datatables"><!---academy-course-->
+        <table class="table datatables-academy-course"><!---->
           <thead class="border-top">
             <tr>
               <th></th>
@@ -666,8 +523,9 @@
               <td th:text="${usuario.rol.rol}"></td>
               <td th:text="${usuario.estado.estado}"></td>
               <td style="display:flex;justify-content: space-between">
-                <button class="btn p-1" type="button"><i class='bx bx-key'></i></button>
-                <button class="btn p-1" type="button"><i class='bx bx-trash'></i></button>
+                <button type="button" style="background: white; border: 1px solid gray; border-radius: 4px;"><i class='bx bx-key'></i></button>
+                <button type="button" style="background: white; border: 1px solid gray; border-radius: 4px;"><i class='bx bx-lock-open-alt'></i></button>
+                <button type="button" style="background: white; border: 1px solid gray; border-radius: 4px;"><i class='bx bx-lock'></i></button>
               </td>
             </tr>
           </tbody>
@@ -837,7 +695,7 @@
                       (null !== d && new ApexCharts(d, c).render(),
                               document.querySelector("#totalBalanceChart")),
               c = {
-                series: [{ data: [ 0 , 0, 0, 0, 0, [(${ingresoTotal})]]}],
+                series: [{ data: [ [(${cantidadesMes.get(5)})], [(${cantidadesMes.get(4)})], [(${cantidadesMes.get(3)})], [(${cantidadesMes.get(2)})], [(${cantidadesMes.get(1)})], [(${cantidadesMes.get(0)})] ]}],
                 chart: {
                   height: 250,
                   parentHeightOffset: 0,
@@ -877,7 +735,7 @@
                 },
                 grid: { show: !1, padding: { top: -10, left: 0, right: 0, bottom: 10 } },
                 xaxis: {
-                  categories: ["Dec","Ene", "Feb", "Mar", "Abr", "May"],
+                  categories: [ [[${meses.get(5)}]] ,[[${meses.get(4)}]], [[${meses.get(3)}]], [[${meses.get(2)}]], [[${meses.get(1)}]], [[${meses.get(0)}]] ],
                   axisBorder: { show: !1 },
                   axisTicks: { show: !1 },
                   labels: { show: !0, style: { fontSize: "13px", colors: r } },
@@ -1010,8 +868,8 @@
               p = {
                 chart: { type: "bar", height: 275, stacked: !0, toolbar: { show: !1 } },
                 series: [
-                  { name: "EN LÍNEA", data: [0, 0, 0, 0, 0, 0, [(${totalReservas})]] },
-                  { name: "DEPÓSITO", data: [0, 0, 0, 0, 0, 0, 0] },
+                  { name: "EN LÍNEA", data: [ [(${cantidadesEnLinea.get(6)})],[(${cantidadesEnLinea.get(5)})],[(${cantidadesEnLinea.get(4)})],[(${cantidadesEnLinea.get(3)})],[(${cantidadesEnLinea.get(2)})],[(${cantidadesEnLinea.get(1)})],[(${cantidadesEnLinea.get(0)})] ]},
+                  { name: "DEPÓSITO", data: [ [(${cantidadesBanco.get(6)})],[(${cantidadesBanco.get(5)})],[(${cantidadesBanco.get(4)})],[(${cantidadesBanco.get(3)})],[(${cantidadesBanco.get(2)})],[(${cantidadesBanco.get(1)})],[(${cantidadesEnLinea.get(0)})] ]},
                 ],
                 plotOptions: {
                   bar: {
@@ -1033,7 +891,7 @@
                   padding: { top: -10, bottom: -12, left: 0, right: 0 },
                 },
                 xaxis: {
-                  categories: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+                  categories: [ [[${dias.get(6)}]] ,[[${dias.get(5)}]],[[${dias.get(4)}]],[[${dias.get(3)}]],[[${dias.get(2)}]],[[${dias.get(1)}]],[[${dias.get(0)}]] ],
                   labels: { show: !0, style: { colors: r, fontSize: "13px" } },
                   axisBorder: { show: !1 },
                   axisTicks: { show: !1 },

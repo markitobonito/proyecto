@@ -51,4 +51,7 @@ public class Reserva {
 
     @Column(name="momentoReserva")
     private Timestamp momentoReserva;
+
+    @Column(name="tipoPago")
+    private String tipoPago;
 }
