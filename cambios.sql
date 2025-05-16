@@ -20,3 +20,20 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Actividad` (
 
 ALTER TABLE `mydb`.`Espacio`
     ADD COLUMN `observaciones` VARCHAR(300) NULL AFTER `foto3`;
+
+
+UPDATE usuarios SET estado='1' WHERE idUsuarios='3';
+UPDATE usuarios SET telefono='999 999 999' WHERE idUsuarios='3';
+SELECT * FROM usuarios;
+SELECT * FROM espacio;
+SELECT * FROM estadoespacio;
+UPDATE estadoespacio SET estado='Disponible' WHERE idEstadoEspacio='1';
+UPDATE estadoespacio SET estado='Ocupado' WHERE idEstadoEspacio='3';
+UPDATE estadoespacio SET estado='Mantenimiento' WHERE idEstadoEspacio='2';
+
+UPDATE estadogeo SET estado='En Curso' WHERE idEstadoGeo='2';
+SELECT * FROM estadogeo;
+
+ALTER TABLE Geolocalizacion MODIFY espacio INT NULL;
+
+DESCRIBE geolocalizacion;
